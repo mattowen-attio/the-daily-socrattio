@@ -24,9 +24,9 @@
       </div>
     </div>
     <nav class="nav">
-      <a href="#today">Today</a>
-      <a href="#board">Leaderboard</a>
-      <a href="#fame">Hall of Fame</a>
+      <a href="#today" title="Today">Hodie</a>
+      <a href="#board" title="Ascending players · the leaderboard">Ascendentes</a>
+      <a href="illustres.html" title="Notable Attians · season champions">Illustres</a>
     </nav>
     <div class="quarter-pill" id="quarterPill">
       <span class="dot"></span><span id="quarterLabel">Q2 2026</span>
@@ -94,10 +94,10 @@
       </aside>
     </section>
 
-    <!-- LEADERBOARD -->
+    <!-- LEADERBOARD · Ascendentes -->
     <section id="board" class="board-section">
       <div class="section-head">
-        <h2>Leaderboard</h2>
+        <h2>Ascendentes <span class="gloss">the rising</span></h2>
         <span class="updated" id="updatedLabel">updated —</span>
       </div>
 
@@ -112,11 +112,11 @@
       <div class="recent" id="recentList"></div>
     </section>
 
-    <!-- HALL OF FAME -->
+    <!-- ATTIANI ILLUSTRES (teaser → dedicated page) -->
     <section id="fame" class="fame-section">
       <div class="section-head">
-        <h2>👑 Hall of Fame</h2>
-        <span class="updated">quarterly champions</span>
+        <h2>👑 Attiani Illustres <span class="gloss">notable Attians</span></h2>
+        <a class="see-all" href="illustres.html">view all champions →</a>
       </div>
       <div class="fame" id="fameList"></div>
     </section>
@@ -127,6 +127,7 @@
     <button class="theme-toggle" id="themeToggle" title="Toggle theme">◐</button>
   </footer>
 
+  <script src="shared.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -71,7 +71,7 @@ body {
   background: color-mix(in srgb, var(--bg) 72%, transparent);
   border-bottom: 1px solid var(--border);
 }
-.brand { display: flex; align-items: center; gap: 11px; }
+.brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: inherit; }
 .brand-logo { display: inline-flex; width: 34px; height: 34px; flex-shrink: 0; }
 .attio-mark { width: 34px; height: 34px; object-fit: contain; color: var(--text); display: block; }
 .attio-mark .amk-cut { fill: var(--bg); }
@@ -89,6 +89,7 @@ body {
   padding: 7px 12px; border-radius: 8px; transition: .18s;
 }
 .nav a:hover { color: var(--text); background: var(--surface-2); }
+.nav a.active { color: var(--text); background: var(--surface-2); }
 .quarter-pill {
   display: flex; align-items: center; gap: 9px;
   padding: 7px 13px; border: 1px solid var(--border); border-radius: 999px;
@@ -300,6 +301,44 @@ section { margin-bottom: clamp(44px, 7vw, 76px); }
   width: 34px; height: 34px; border-radius: 9px; cursor: pointer; font-size: 16px; transition: .18s;
 }
 .theme-toggle:hover { color: var(--text); border-color: var(--border-bright); }
+
+/* ---- Latin gloss next to a heading ---- */
+.gloss { font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 500; font-size: .62em; color: var(--text-faint); margin-left: 9px; letter-spacing: 0; }
+.see-all { font-size: 12.5px; font-weight: 600; color: var(--accent); text-decoration: none; }
+.see-all:hover { text-decoration: underline; }
+.bg-glow.gold { background: radial-gradient(circle, rgba(245,196,81,.15), transparent 62%); }
+.quarter-pill .dot.gold { background: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 22%, transparent); }
+
+/* ---- Attiani Illustres (champions page) ---- */
+.illustres-hero { text-align: center; padding: clamp(16px, 4vw, 36px) 0 36px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.ih-crown { font-size: 42px; filter: drop-shadow(0 5px 12px rgba(245,196,81,.45)); }
+.illustres-hero h1 { font-family: 'Manrope', var(--font); font-weight: 800; font-size: clamp(30px, 5vw, 46px); letter-spacing: -.03em; }
+.ih-gloss { font-family: 'Newsreader', serif; font-style: italic; color: var(--gold); font-size: 15px; margin-top: -2px; }
+.ih-sub { color: var(--text-dim); font-size: 15px; max-width: 520px; text-wrap: balance; }
+
+.champ-list { display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin: 0 auto; }
+.champ-card {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 22px;
+  padding: 22px 26px; border: 1px solid color-mix(in srgb, var(--gold) 26%, transparent);
+  border-radius: var(--radius); background: linear-gradient(180deg, var(--gold-soft), var(--surface)); box-shadow: var(--shadow);
+}
+.champ-face { position: relative; }
+.champ-crown { position: absolute; top: -17px; left: 50%; transform: translateX(-50%); font-size: 22px; filter: drop-shadow(0 3px 6px rgba(245,196,81,.5)); }
+.champ-main { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+.champ-name { font-weight: 700; font-size: 19px; letter-spacing: -.01em; }
+.champ-seasons { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.champ-title-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gold); margin-right: 2px; }
+.season-badge { font-size: 11.5px; font-weight: 600; color: var(--text-dim); background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 3px 9px; }
+.champ-stats { display: flex; gap: 22px; }
+.stat { display: flex; flex-direction: column; align-items: center; gap: 1px; min-width: 50px; }
+.stat-icon { font-size: 15px; }
+.stat-val { font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
+.stat-label { font-size: 10.5px; color: var(--text-faint); text-transform: uppercase; letter-spacing: .05em; }
+.champ-empty { text-align: center; color: var(--text-dim); padding: 48px 20px; }
+@media (max-width: 640px) {
+  .champ-card { grid-template-columns: auto 1fr; gap: 16px; }
+  .champ-stats { grid-column: 1 / -1; justify-content: space-between; gap: 10px; }
+}
 
 /* ---- entrance ---- */
 .fade-up { opacity: 0; transform: translateY(12px); animation: fadeUp .55s cubic-bezier(.2,.7,.3,1) forwards; }

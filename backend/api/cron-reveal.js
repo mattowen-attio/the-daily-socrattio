@@ -34,7 +34,11 @@ export default async function handler(req, res) {
     const champ = [...board.players].sort((a, b) => b.points - a.points)[0];
     if (champ) {
       const fame = await getFame();
-      fame.champions.unshift({ quarter: board.quarter, id: champ.id, name: champ.name, points: champ.points, imageUrl: champ.imageUrl });
+      fame.champions.unshift({
+        quarter: board.quarter, id: champ.id, name: champ.name,
+        points: champ.points, correct: champ.points, bestStreak: champ.bestStreak || 0, daysPlayed: champ.daysPlayed || 0,
+        imageUrl: champ.imageUrl,
+      });
       await setFame(fame);
     }
     board = freshBoard();
@@ -45,7 +49,7 @@ export default async function handler(req, res) {
   for (const s of submissions) {
     if (!byId[s.id]) {
       const { name, imageUrl } = await userProfile(s.id);
-      byId[s.id] = { id: s.id, name, points: 0, streak: 0, daysPlayed: 0, lastCorrect: null, imageUrl };
+      byId[s.id] = { id: s.id, name, points: 0, streak: 0, bestStreak: 0, daysPlayed: 0, lastCorrect: null, imageUrl };
       board.players.push(byId[s.id]);
     }
     const p = byId[s.id];
@@ -53,6 +57,7 @@ export default async function handler(req, res) {
     if (correct.has(s.id)) {
       p.points += 1;
       p.streak = p.lastCorrect === prevYmd(today) ? p.streak + 1 : 1;
+      p.bestStreak = Math.max(p.bestStreak || 0, p.streak);
       p.lastCorrect = today;
     } else {
       p.streak = 0;

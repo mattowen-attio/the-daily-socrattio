@@ -1,8 +1,8 @@
 {
-  "_note": "Quarterly champions. The automation appends a new entry when a quarter ends and the leaderboard resets.",
+  "_note": "Quarterly champions ('Attiani Illustres'). cron-reveal appends an entry when a quarter ends and the leaderboard resets. points = correct answers that season.",
   "champions": [
-    { "quarter": "Q1 2026", "name": "Maya Patel",     "id": "U003", "points": 47, "imageUrl": null },
-    { "quarter": "Q4 2025", "name": "Lukas Bauer",    "id": "U002", "points": 52, "imageUrl": null },
-    { "quarter": "Q3 2025", "name": "Sofia Almeida",  "id": "U001", "points": 44, "imageUrl": null }
+    { "quarter": "Q1 2026", "name": "Maya Patel",    "id": "U003", "points": 47, "correct": 47, "bestStreak": 12, "daysPlayed": 58, "imageUrl": null },
+    { "quarter": "Q4 2025", "name": "Lukas Bauer",   "id": "U002", "points": 52, "correct": 52, "bestStreak": 15, "daysPlayed": 61, "imageUrl": null },
+    { "quarter": "Q3 2025", "name": "Sofia Almeida", "id": "U001", "points": 44, "correct": 44, "bestStreak": 9,  "daysPlayed": 55, "imageUrl": null }
   ]
 }
