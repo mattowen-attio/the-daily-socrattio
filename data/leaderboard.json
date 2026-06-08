@@ -1,0 +1,20 @@
+{
+  "quarter": "Q2 2026",
+  "quarterStart": "2026-04-01",
+  "quarterEnd": "2026-06-30",
+  "lastUpdated": "2026-06-08",
+  "players": [
+    { "id": "U001", "name": "Sofia Almeida",   "points": 31, "streak": 6, "daysPlayed": 41, "lastCorrect": "2026-06-07", "imageUrl": null },
+    { "id": "U002", "name": "Lukas Bauer",     "points": 29, "streak": 4, "daysPlayed": 38, "lastCorrect": "2026-06-07", "imageUrl": null },
+    { "id": "U003", "name": "Maya Patel",      "points": 27, "streak": 0, "daysPlayed": 36, "lastCorrect": "2026-06-05", "imageUrl": null },
+    { "id": "U004", "name": "Tom Walsh",       "points": 24, "streak": 2, "daysPlayed": 33, "lastCorrect": "2026-06-07", "imageUrl": null },
+    { "id": "U005", "name": "Elena Rossi",     "points": 22, "streak": 1, "daysPlayed": 30, "lastCorrect": "2026-06-06", "imageUrl": null },
+    { "id": "U006", "name": "Jonas Eriksson",  "points": 19, "streak": 0, "daysPlayed": 28, "lastCorrect": "2026-06-04", "imageUrl": null },
+    { "id": "U007", "name": "Aisha Okafor",    "points": 18, "streak": 3, "daysPlayed": 25, "lastCorrect": "2026-06-07", "imageUrl": null },
+    { "id": "U008", "name": "Daniel Kim",      "points": 15, "streak": 0, "daysPlayed": 22, "lastCorrect": "2026-06-03", "imageUrl": null },
+    { "id": "U009", "name": "Chloé Moreau",    "points": 13, "streak": 1, "daysPlayed": 20, "lastCorrect": "2026-06-06", "imageUrl": null },
+    { "id": "U010", "name": "Marco Bianchi",   "points": 11, "streak": 0, "daysPlayed": 17, "lastCorrect": "2026-06-02", "imageUrl": null },
+    { "id": "U011", "name": "Hannah Schmidt",  "points": 8,  "streak": 2, "daysPlayed": 14, "lastCorrect": "2026-06-07", "imageUrl": null },
+    { "id": "U012", "name": "Owen Hughes",     "points": 5,  "streak": 0, "daysPlayed": 9,  "lastCorrect": "2026-05-30", "imageUrl": null }
+  ]
+}

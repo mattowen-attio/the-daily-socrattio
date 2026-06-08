@@ -1,0 +1,8 @@
+{
+  "_note": "Quarterly champions. The automation appends a new entry when a quarter ends and the leaderboard resets.",
+  "champions": [
+    { "quarter": "Q1 2026", "name": "Maya Patel",     "id": "U003", "points": 47, "imageUrl": null },
+    { "quarter": "Q4 2025", "name": "Lukas Bauer",    "id": "U002", "points": 52, "imageUrl": null },
+    { "quarter": "Q3 2025", "name": "Sofia Almeida",  "id": "U001", "points": 44, "imageUrl": null }
+  ]
+}

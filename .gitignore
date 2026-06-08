@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+backend/node_modules/
+
+# secrets / env
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# vercel
+.vercel/
+
+# os / editor cruft
+.DS_Store
+*.log
+.idea/
+.vscode/

@@ -1,0 +1,15 @@
+{
+  "name": "daily-socrattio-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Slack interactivity + scheduling + judging for The Daily Socrattio",
+  "scripts": {
+    "seed": "node scripts/seed.mjs",
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.40.0",
+    "@upstash/redis": "^1.34.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "_apiBase": "Empty = static demo. Set to your Vercel backend URL to render LIVE data from /api/state.",
+  "apiBase": "",
+  "title": "The Daily Socrattio",
+  "subtitle": "Learn by asking. Answer to climb. — a daily riddle for the wise.",
+  "channel": "#the-daily-socrattio",
+  "workspace": "Attio",
+  "postTimeUTC": "15:00",
+  "revealTimeUTC": "20:00",
+  "pointsPerCorrect": 1,
+  "timezoneNote": "Posted 15:00 UTC (10am ET · 7am PT · 4pm CET) · Answer revealed 20:00 UTC"
+}

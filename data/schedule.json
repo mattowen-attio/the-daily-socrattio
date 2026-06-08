@@ -1,0 +1,11 @@
+{
+  "_note": "Log of which riddle ran each day, its status, the Slack message timestamp, and who got it right. The most recent entry is treated as 'today' by the site.",
+  "days": [
+    { "date": "2026-06-08", "riddleId": "r034", "status": "open",     "slackTs": "1717851600.000100", "winners": [] },
+    { "date": "2026-06-07", "riddleId": "r017", "status": "revealed", "slackTs": "1717765200.000100", "winners": ["U001", "U002", "U004", "U007", "U011"] },
+    { "date": "2026-06-06", "riddleId": "r014", "status": "revealed", "slackTs": "1717678800.000100", "winners": ["U001", "U005", "U009"] },
+    { "date": "2026-06-05", "riddleId": "r008", "status": "revealed", "slackTs": "1717592400.000100", "winners": ["U001", "U002", "U003"] },
+    { "date": "2026-06-04", "riddleId": "r021", "status": "revealed", "slackTs": "1717506000.000100", "winners": ["U002", "U006"] },
+    { "date": "2026-06-03", "riddleId": "r032", "status": "revealed", "slackTs": "1717419600.000100", "winners": ["U008"] }
+  ]
+}

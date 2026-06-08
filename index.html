@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Daily Socrattio · Attio</title>
+  <meta name="description" content="The Daily Socrattio — a daily riddle in #the-daily-socrattio. Learn by asking. Answer to climb." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧩</text></svg>" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-logo" id="brandLogo" aria-hidden="true"></span>
+      <div class="brand-text">
+        <span class="brand-title"><span class="bt-light">The Daily</span>&nbsp;Socrattio</span>
+        <span class="brand-sub">#the-daily-socrattio <span class="dotsep">·</span> powered by thoughts</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#today">Today</a>
+      <a href="#board">Leaderboard</a>
+      <a href="#fame">Hall of Fame</a>
+    </nav>
+    <div class="quarter-pill" id="quarterPill">
+      <span class="dot"></span><span id="quarterLabel">Q2 2026</span>
+      <span class="divider"></span>
+      <span id="daysLeft">— days left</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO / TODAY -->
+    <section id="today" class="hero">
+      <div class="riddle-card" id="riddleCard">
+        <div class="riddle-head">
+          <span class="chip" id="riddleDate">Today</span>
+          <span class="chip ghost" id="riddleDiff">—</span>
+          <span class="status-tag" id="statusTag"><span class="pulse"></span> Open for answers</span>
+        </div>
+        <p class="riddle-text" id="riddleText">Loading today's riddle…</p>
+        <div class="riddle-foot">
+          <div class="reveal-block" id="revealBlock">
+            <span class="reveal-label">Answer reveals in</span>
+            <span class="countdown" id="countdown">--:--:--</span>
+          </div>
+          <a class="answer-btn" id="answerBtn" target="_blank" rel="noopener">
+            Answer in Slack <span class="arrow">↗</span>
+          </a>
+        </div>
+        <div class="answer-reveal" id="answerReveal" hidden>
+          <span class="reveal-label">Today's answer</span>
+          <span class="answer-value" id="answerValue">—</span>
+        </div>
+      </div>
+
+      <aside class="slack-preview" aria-label="Slack post preview">
+        <div class="sp-head">
+          <span class="sp-app">🧩 The Daily Socrattio <span class="sp-badge">APP</span></span>
+          <span class="sp-time" id="spTime">15:00</span>
+        </div>
+        <div class="sp-body">
+          <p class="sp-greeting">Morning, team! ☀️ Today's riddle:</p>
+          <p class="sp-riddle" id="spRiddle">—</p>
+          <p class="sp-cta">💬 Debate it in the thread — but submit your answer <b>privately</b> 👇<br>Results revealed at 20:00 UTC 🏆</p>
+          <button class="sp-submit" type="button">🔒 Submit your answer</button>
+        </div>
+        <div class="sp-foot">
+          <span>🧠 <b>14</b> answered</span>
+          <span>🧵 8 discussing</span>
+        </div>
+
+        <!-- the private answer form (a Block Kit modal — only you see it) -->
+        <div class="sp-modal" aria-label="Answer form preview">
+          <div class="spm-head">
+            <span class="spm-title">Submit your answer</span>
+            <span class="spm-x">✕</span>
+          </div>
+          <div class="spm-body">
+            <span class="spm-who">🔒 Answering as <b>Maya P.</b> · only you can see this</span>
+            <div class="spm-input">a candle<span class="spm-caret"></span></div>
+          </div>
+          <div class="spm-foot">
+            <span class="spm-note">You can edit until 20:00</span>
+            <span class="spm-go">Submit</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section id="board" class="board-section">
+      <div class="section-head">
+        <h2>Leaderboard</h2>
+        <span class="updated" id="updatedLabel">updated —</span>
+      </div>
+
+      <div class="podium" id="podium"></div>
+
+      <div class="board" id="board-list"></div>
+    </section>
+
+    <!-- RECENT -->
+    <section class="recent-section">
+      <div class="section-head"><h2>Recent riddles</h2></div>
+      <div class="recent" id="recentList"></div>
+    </section>
+
+    <!-- HALL OF FAME -->
+    <section id="fame" class="fame-section">
+      <div class="section-head">
+        <h2>👑 Hall of Fame</h2>
+        <span class="updated">quarterly champions</span>
+      </div>
+      <div class="fame" id="fameList"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span id="footNote">Posted daily in #the-daily-socrattio · resets every quarter</span>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">◐</button>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
