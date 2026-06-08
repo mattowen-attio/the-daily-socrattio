@@ -46,6 +46,18 @@ function mountLogo() {
 }
 mountLogo();
 
+/* ---- custom Attio-style symbol set (geometric, 24px grid, 2px rounded strokes) ----
+ * Replaces generic emoji on the champions page. Inherit `currentColor`, so they
+ * take the gold accent. The champion emblem is a geometric crown. */
+// champion emblem — a clean geometric crown (gold). Bold, simple, unmistakable.
+const ICONS = {
+  emblem: `<svg class="sym sym-emblem" viewBox="0 0 64 64" role="img" aria-label="champion crown"><g fill="currentColor"><path d="M11 47 L11 26 L21.5 35.5 L32 16 L42.5 35.5 L53 26 L53 47 Z"/><rect x="9.5" y="45.5" width="45" height="8.5" rx="2.6"/><circle cx="11" cy="23" r="2.5"/><circle cx="32" cy="13" r="2.7"/><circle cx="53" cy="23" r="2.5"/></g></svg>`,
+  check: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.4l2.6 2.6L16 9"/></svg>`,
+  flame: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7c2.7 3.2 4.8 5.7 4.8 9.1a4.8 4.8 0 0 1-9.6 0c0-1.9.9-3.5 2.1-4.8C10.7 7.8 11.6 6 12 2.7Z"/><path d="M12 13.4c1 1 1.6 1.8 1.6 2.8a1.6 1.6 0 0 1-3.2 0c0-1 .6-1.8 1.6-2.8Z"/></svg>`,
+  calendar: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3.2v3.4M16 3.2v3.4"/></svg>`,
+  trophy: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.5h9V8a4.5 4.5 0 0 1-9 0V4.5Z"/><path d="M7.5 5.6H5.3a2 2 0 0 0 2.4 3.1M16.5 5.6h2.2a2 2 0 0 1-2.4 3.1"/><path d="M12 12.5v3M9 19.5l.7-4h4.6l.7 4M8.3 19.5h7.4"/></svg>`,
+};
+
 async function loadJSON(p) { const r = await fetch(p, { cache: 'no-store' }); if (!r.ok) throw new Error(p); return r.json(); }
 
 // Normalize either the live API or the local demo files into one model shape.
