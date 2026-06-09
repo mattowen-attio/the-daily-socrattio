@@ -16,6 +16,7 @@
   --green: #4ade80;
   --glow: rgba(91, 141, 239, 0.16);
   --particle-rgb: 150, 170, 230;
+  --particle-op: 1;
   --radius: 16px;
   --radius-sm: 10px;
   --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 30px rgba(0,0,0,.35);
@@ -25,8 +26,8 @@
 [data-theme="light"] {
   --bg: #f7f7f6;
   --bg-2: #ffffff;
-  --surface: rgba(255, 255, 255, 0.68);
-  --surface-2: rgba(255, 255, 255, 0.86);
+  --surface: rgba(255, 255, 255, 0.42);
+  --surface-2: rgba(255, 255, 255, 0.62);
   --border: rgba(20, 20, 28, 0.09);
   --border-bright: rgba(20, 20, 28, 0.16);
   --text: #1c1d1f;
@@ -37,7 +38,8 @@
   --gold: #b07d1a;
   --gold-soft: rgba(176, 125, 26, 0.10);
   --glow: rgba(31, 116, 231, 0.10);
-  --particle-rgb: 95, 115, 165;
+  --particle-rgb: 70, 95, 155;
+  --particle-op: 1.7;
   --shadow: 0 1px 2px rgba(20,20,40,.05), 0 8px 28px rgba(20,20,40,.07);
 }
 

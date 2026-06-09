@@ -55,7 +55,9 @@ function initParticles() {
   document.body.appendChild(c);
   const ctx = c.getContext('2d');
   let w, h, dpr, parts;
-  const colour = () => (getComputedStyle(document.documentElement).getPropertyValue('--particle-rgb').trim() || '150,170,230');
+  const cs = () => getComputedStyle(document.documentElement);
+  const colour = () => (cs().getPropertyValue('--particle-rgb').trim() || '150,170,230');
+  const op = () => parseFloat(cs().getPropertyValue('--particle-op')) || 1;
   const spawn = (seed) => ({
     x: Math.random() * w,
     y: seed ? Math.random() * h : h + 8 * dpr,
@@ -73,12 +75,12 @@ function initParticles() {
   }
   function frame() {
     ctx.clearRect(0, 0, w, h);
-    const col = colour();
+    const col = colour(); const mul = op();
     for (const p of parts) {
       p.y -= p.sp; p.sway += p.swaySp;
       if (p.y < -8 * dpr) Object.assign(p, spawn(false));
       ctx.beginPath();
-      ctx.fillStyle = `rgba(${col},${p.a})`;
+      ctx.fillStyle = `rgba(${col},${Math.min(0.85, p.a * mul)})`;
       ctx.arc(p.x + Math.sin(p.sway) * 0.4 * dpr, p.y, p.r, 0, Math.PI * 2);
       ctx.fill();
     }
