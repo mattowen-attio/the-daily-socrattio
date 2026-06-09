@@ -25,23 +25,23 @@ Slack sends button/modal events to a live HTTPS URL and replies must come back w
 store private answers. So this small service holds the secrets + Redis; the public
 repo only ever sees **aggregate** data via `/api/state`.
 
-## Deploy (≈15 min)
+## Deploy (≈15 min, no local tooling needed)
 1. **Redis** - create a free [Upstash](https://upstash.com) Redis database; copy its
    REST URL + token.
-2. **Seed the riddles** - locally:
+2. **Deploy to Vercel** - in the Vercel dashboard, **Add New → Project → import this repo**,
+   set **Root Directory = `backend`**, and add the env vars from [`.env.example`](.env.example)
+   (Upstash URL/token, `ANTHROPIC_API_KEY`, `CRON_SECRET`, `SITE_ORIGIN`). Deploy.
+   *(Slack vars can be left blank for now - they're added once the bot token exists.)*
+3. **Seed the database (once)** - hit the protected seed endpoint:
    ```bash
-   cd backend && npm install
-   UPSTASH_REDIS_REST_URL=... UPSTASH_REDIS_REST_TOKEN=... npm run seed
+   curl -X POST https://<your-backend>.vercel.app/api/seed -H "Authorization: Bearer <CRON_SECRET>"
    ```
-3. **Deploy** - `vercel deploy` (or connect the repo in the Vercel dashboard, root
-   directory = `backend`). Add the env vars from [`.env.example`](.env.example) in
-   Vercel → Settings → Environment Variables.
+   (Or, if you have Node locally, `npm install && npm run seed`.)
 4. **Point the site at it** - set `apiBase` in `../data/config.json` to your Vercel URL.
-5. **Slack app (last)** - create the app, add bot scopes `chat:write`, `users:read`,
-   `im:write`, `mpim:write` (`reactions:write` optional), set **Interactivity → Request
-   URL** to `https://<your-vercel>/api/interactions`, install to the workspace, invite
-   the bot to **#the-daily-socrattio**, then put `SLACK_BOT_TOKEN` + `SLACK_SIGNING_SECRET`
-   + `SLACK_CHANNEL_ID` into Vercel.
+5. **Slack app (last)** - see [`../docs/SLACK-APP-SPEC.md`](../docs/SLACK-APP-SPEC.md). Bot
+   scopes `chat:write`, `users:read`, `im:write`; **Interactivity → Request URL**
+   `https://<your-backend>/api/interactions`; invite the bot to **#the-daily-socrattio**;
+   then add `SLACK_BOT_TOKEN`, `SLACK_SIGNING_SECRET`, `SLACK_CHANNEL_ID` in Vercel.
 
 ## Scheduling note
 `vercel.json` defines the 15:00 / 20:00 UTC crons. Vercel's Hobby plan limits cron

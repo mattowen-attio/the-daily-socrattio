@@ -1,0 +1,435 @@
+// Riddle bank bundled for the seed endpoint (so deploying needs no local Node).
+// Source of truth mirrors ../../data/riddles.json.
+export const RIDDLES = [
+  {
+    "id": "r001",
+    "text": "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?",
+    "answer": "An echo",
+    "accept": [
+      "echo"
+    ],
+    "difficulty": "medium",
+    "category": "classic"
+  },
+  {
+    "id": "r002",
+    "text": "The more of me you take, the more you leave behind. What am I?",
+    "answer": "Footsteps",
+    "accept": [
+      "footsteps",
+      "steps",
+      "footprints"
+    ],
+    "difficulty": "medium",
+    "category": "classic"
+  },
+  {
+    "id": "r003",
+    "text": "What has keys but opens no locks?",
+    "answer": "A piano",
+    "accept": [
+      "piano",
+      "keyboard"
+    ],
+    "difficulty": "easy",
+    "category": "wordplay"
+  },
+  {
+    "id": "r004",
+    "text": "What has a head and a tail but no body?",
+    "answer": "A coin",
+    "accept": [
+      "coin",
+      "a coin"
+    ],
+    "difficulty": "easy",
+    "category": "classic"
+  },
+  {
+    "id": "r005",
+    "text": "What has hands but cannot clap?",
+    "answer": "A clock",
+    "accept": [
+      "clock",
+      "a watch",
+      "watch"
+    ],
+    "difficulty": "easy",
+    "category": "classic"
+  },
+  {
+    "id": "r006",
+    "text": "What gets wetter the more it dries?",
+    "answer": "A towel",
+    "accept": [
+      "towel"
+    ],
+    "difficulty": "easy",
+    "category": "classic"
+  },
+  {
+    "id": "r007",
+    "text": "What has many teeth but cannot bite?",
+    "answer": "A comb",
+    "accept": [
+      "comb",
+      "zipper",
+      "a zipper",
+      "saw"
+    ],
+    "difficulty": "medium",
+    "category": "classic"
+  },
+  {
+    "id": "r008",
+    "text": "What can travel around the world while staying in a corner?",
+    "answer": "A stamp",
+    "accept": [
+      "stamp",
+      "a postage stamp",
+      "postage stamp"
+    ],
+    "difficulty": "medium",
+    "category": "lateral"
+  },
+  {
+    "id": "r009",
+    "text": "I'm tall when I'm young and short when I'm old. What am I?",
+    "answer": "A candle",
+    "accept": [
+      "candle",
+      "a pencil",
+      "pencil"
+    ],
+    "difficulty": "easy",
+    "category": "classic"
+  },
+  {
+    "id": "r010",
+    "text": "What has a neck but no head?",
+    "answer": "A bottle",
+    "accept": [
+      "bottle",
+      "a shirt",
+      "shirt"
+    ],
+    "difficulty": "easy",
+    "category": "classic"
+  },
+  {
+    "id": "r011",
+    "text": "What has one eye but cannot see?",
+    "answer": "A needle",
+    "accept": [
+      "needle",
+      "a needle"
+    ],
+    "difficulty": "easy",
+    "category": "classic"
+  },
+  {
+    "id": "r012",
+    "text": "What goes up but never comes down?",
+    "answer": "Your age",
+    "accept": [
+      "age",
+      "your age"
+    ],
+    "difficulty": "easy",
+    "category": "lateral"
+  },
+  {
+    "id": "r013",
+    "text": "What has cities but no houses, forests but no trees, and rivers but no water?",
+    "answer": "A map",
+    "accept": [
+      "map",
+      "a map"
+    ],
+    "difficulty": "medium",
+    "category": "classic"
+  },
+  {
+    "id": "r014",
+    "text": "The more you take away from me, the bigger I get. What am I?",
+    "answer": "A hole",
+    "accept": [
+      "hole",
+      "a hole",
+      "debt"
+    ],
+    "difficulty": "medium",
+    "category": "lateral"
+  },
+  {
+    "id": "r015",
+    "text": "What can you catch but not throw?",
+    "answer": "A cold",
+    "accept": [
+      "a cold",
+      "cold",
+      "the flu"
+    ],
+    "difficulty": "medium",
+    "category": "lateral"
+  },
+  {
+    "id": "r016",
+    "text": "What has words but never speaks?",
+    "answer": "A book",
+    "accept": [
+      "book",
+      "a book"
+    ],
+    "difficulty": "easy",
+    "category": "classic"
+  },
+  {
+    "id": "r017",
+    "text": "What runs but never walks, has a bed but never sleeps, and has a mouth but never talks?",
+    "answer": "A river",
+    "accept": [
+      "river",
+      "a river"
+    ],
+    "difficulty": "medium",
+    "category": "classic"
+  },
+  {
+    "id": "r018",
+    "text": "What has a thumb and four fingers but is not alive?",
+    "answer": "A glove",
+    "accept": [
+      "glove",
+      "a glove"
+    ],
+    "difficulty": "easy",
+    "category": "classic"
+  },
+  {
+    "id": "r019",
+    "text": "What building has the most stories?",
+    "answer": "A library",
+    "accept": [
+      "library",
+      "a library"
+    ],
+    "difficulty": "easy",
+    "category": "wordplay"
+  },
+  {
+    "id": "r020",
+    "text": "What can fill a room but takes up no space?",
+    "answer": "Light",
+    "accept": [
+      "light",
+      "sound"
+    ],
+    "difficulty": "medium",
+    "category": "lateral"
+  },
+  {
+    "id": "r021",
+    "text": "I have branches, but no fruit, trunk, or leaves. What am I?",
+    "answer": "A bank",
+    "accept": [
+      "bank",
+      "a bank"
+    ],
+    "difficulty": "medium",
+    "category": "wordplay"
+  },
+  {
+    "id": "r022",
+    "text": "What kind of band never plays music?",
+    "answer": "A rubber band",
+    "accept": [
+      "rubber band",
+      "a rubber band",
+      "wedding band"
+    ],
+    "difficulty": "easy",
+    "category": "wordplay"
+  },
+  {
+    "id": "r023",
+    "text": "What has to be broken before you can use it?",
+    "answer": "An egg",
+    "accept": [
+      "egg",
+      "an egg"
+    ],
+    "difficulty": "easy",
+    "category": "classic"
+  },
+  {
+    "id": "r024",
+    "text": "I'm light as a feather, yet the strongest person can't hold me for much more than a minute. What am I?",
+    "answer": "Breath",
+    "accept": [
+      "breath",
+      "your breath"
+    ],
+    "difficulty": "medium",
+    "category": "lateral"
+  },
+  {
+    "id": "r025",
+    "text": "What invention lets you look right through a wall?",
+    "answer": "A window",
+    "accept": [
+      "window",
+      "a window"
+    ],
+    "difficulty": "easy",
+    "category": "lateral"
+  },
+  {
+    "id": "r026",
+    "text": "What can you keep after giving it to someone?",
+    "answer": "Your word",
+    "accept": [
+      "your word",
+      "word",
+      "a promise",
+      "promise"
+    ],
+    "difficulty": "medium",
+    "category": "lateral"
+  },
+  {
+    "id": "r027",
+    "text": "What month of the year has 28 days?",
+    "answer": "All of them",
+    "accept": [
+      "all of them",
+      "all",
+      "every month",
+      "all months"
+    ],
+    "difficulty": "easy",
+    "category": "lateral"
+  },
+  {
+    "id": "r028",
+    "text": "What is full of holes but still holds water?",
+    "answer": "A sponge",
+    "accept": [
+      "sponge",
+      "a sponge"
+    ],
+    "difficulty": "easy",
+    "category": "classic"
+  },
+  {
+    "id": "r029",
+    "text": "What word is spelled incorrectly in every dictionary?",
+    "answer": "Incorrectly",
+    "accept": [
+      "incorrectly"
+    ],
+    "difficulty": "medium",
+    "category": "wordplay"
+  },
+  {
+    "id": "r030",
+    "text": "What begins with T, ends with T, and has T in it?",
+    "answer": "A teapot",
+    "accept": [
+      "teapot",
+      "a teapot"
+    ],
+    "difficulty": "medium",
+    "category": "wordplay"
+  },
+  {
+    "id": "r031",
+    "text": "What is so fragile that saying its name breaks it?",
+    "answer": "Silence",
+    "accept": [
+      "silence"
+    ],
+    "difficulty": "medium",
+    "category": "lateral"
+  },
+  {
+    "id": "r032",
+    "text": "What has 13 hearts but no other organs?",
+    "answer": "A deck of cards",
+    "accept": [
+      "a deck of cards",
+      "deck of cards",
+      "pack of cards",
+      "cards"
+    ],
+    "difficulty": "hard",
+    "category": "lateral"
+  },
+  {
+    "id": "r033",
+    "text": "What kind of room has no doors or windows?",
+    "answer": "A mushroom",
+    "accept": [
+      "mushroom",
+      "a mushroom"
+    ],
+    "difficulty": "easy",
+    "category": "wordplay"
+  },
+  {
+    "id": "r034",
+    "text": "What five-letter word becomes shorter when you add two letters to it?",
+    "answer": "Short",
+    "accept": [
+      "short"
+    ],
+    "difficulty": "hard",
+    "category": "wordplay"
+  },
+  {
+    "id": "r035",
+    "text": "I am an odd number. Take away a letter and I become even. What number am I?",
+    "answer": "Seven",
+    "accept": [
+      "seven",
+      "7"
+    ],
+    "difficulty": "hard",
+    "category": "wordplay"
+  },
+  {
+    "id": "r036",
+    "text": "What has an end but no beginning, a home but no family, and a space but no room?",
+    "answer": "A keyboard",
+    "accept": [
+      "keyboard",
+      "a keyboard"
+    ],
+    "difficulty": "hard",
+    "category": "lateral"
+  },
+  {
+    "id": "r037",
+    "text": "Forward I am heavy, but backward I am not. What am I?",
+    "answer": "The word 'ton'",
+    "accept": [
+      "ton",
+      "the word ton"
+    ],
+    "difficulty": "hard",
+    "category": "wordplay"
+  },
+  {
+    "id": "r038",
+    "text": "What goes through cities and fields but never moves?",
+    "answer": "A road",
+    "accept": [
+      "road",
+      "a road",
+      "a highway",
+      "highway"
+    ],
+    "difficulty": "medium",
+    "category": "classic"
+  }
+];
