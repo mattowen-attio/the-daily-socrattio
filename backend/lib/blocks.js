@@ -3,7 +3,7 @@
  */
 
 export const countText = (n) =>
-  n === 0 ? '🧠 _Be the first to answer…_'
+  n === 0 ? '🧠 _Be the first to answer..._'
           : `🧠 *${n}* ${n === 1 ? 'sleuth has' : 'sleuths have'} answered so far`;
 
 /** The daily riddle message: the riddle, a discuss-vs-submit nudge, the button, and a live count. */
@@ -45,7 +45,7 @@ export function answerModal({ riddle, channel, ts, existing = '' }) {
           action_id: 'value',
           initial_value: existing,
           focus_on_load: true,
-          placeholder: { type: 'plain_text', text: 'Type your answer…' },
+          placeholder: { type: 'plain_text', text: 'Type your answer...' },
         },
       },
       { type: 'context', elements: [{ type: 'mrkdwn', text: '🔒 Only you can see this. You can edit it until the reveal.' }] },

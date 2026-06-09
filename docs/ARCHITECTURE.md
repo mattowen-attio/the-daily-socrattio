@@ -55,7 +55,7 @@ sends our backend a `view_submission` payload that contains both the typed answe
 **Why not the alternatives**
 - *External webpage + "Sign in with Slack":* works (OpenID Connect gives the user id)
   but it's the most friction and pulls people out of Slack. Not recommended. ([openid.connect.userInfo](https://docs.slack.dev/reference/methods/openid.connect.userInfo/))
-- *Slash command (`/answer …`):* responses are ephemeral by default, but making
+- *Slash command (`/answer ...`):* responses are ephemeral by default, but making
   anything public (`in_channel`) **also reposts the typed answer into the channel** -
   a privacy hazard. ([slash commands](https://docs.slack.dev/interactivity/implementing-slash-commands/))
 
@@ -68,7 +68,7 @@ a bot adding the same emoji only ever counts as **1** - reactions are tracked pe
 `(user, emoji)`, and a repeat `reactions.add` by the bot returns `already_reacted`. ([reactions.add](https://docs.slack.dev/reference/methods/reactions.add/))
 
 Instead, each time someone submits, the bot **edits its own riddle message**
-(`chat.update`) to bump a live tally - *"🧠 14 sleuths have answered…"*. `chat.update`
+(`chat.update`) to bump a live tally - *"🧠 14 sleuths have answered..."*. `chat.update`
 is Tier 3 rate-limited (50+/min), comfortably enough for a 50-200 person team. ([chat.update](https://docs.slack.dev/reference/methods/chat.update/), [rate limits](https://docs.slack.dev/apis/web-api/rate-limits/))
 
 ---
