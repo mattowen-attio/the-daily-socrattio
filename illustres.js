@@ -22,7 +22,7 @@ async function initIllustres() {
 
   const list = $('#champList');
   if (!champs.length) {
-    list.appendChild(el('p', 'champ-empty', 'No champions crowned yet — the first quarter is still being written.'));
+    list.appendChild(el('p', 'champ-empty', 'No champions crowned yet - the first quarter is still being written.'));
     return;
   }
 
@@ -38,13 +38,13 @@ async function initIllustres() {
     const card = el('div', 'champ-card fade-up');
     card.style.animationDelay = (i * 70) + 'ms';
 
-    // left — crowned avatar
+    // left - crowned avatar
     const left = el('div', 'champ-face');
     left.appendChild(el('div', 'champ-crown', ICONS.emblem));
     left.appendChild(avatar(c, true));
     card.appendChild(left);
 
-    // middle — name + season badges
+    // middle - name + season badges
     const mid = el('div', 'champ-main');
     mid.appendChild(el('div', 'champ-name', c.name));
     const seasonsWrap = el('div', 'champ-seasons');
@@ -53,7 +53,7 @@ async function initIllustres() {
     mid.appendChild(seasonsWrap);
     card.appendChild(mid);
 
-    // right — stats
+    // right - stats
     const stats = el('div', 'champ-stats');
     stats.appendChild(stat(ICONS.check, c.correct, 'correct'));
     stats.appendChild(stat(ICONS.flame, c.bestStreak, 'best streak'));

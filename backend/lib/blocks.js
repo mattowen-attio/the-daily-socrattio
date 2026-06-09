@@ -1,5 +1,5 @@
 /**
- * blocks.js — Block Kit builders for the riddle message and the private answer modal.
+ * blocks.js - Block Kit builders for the riddle message and the private answer modal.
  */
 
 export const countText = (n) =>
@@ -12,7 +12,7 @@ export function riddleMessage({ riddle, count = 0, revealTime = '20:00' }) {
     text: `Today's riddle: ${riddle.text}`, // notification fallback
     blocks: [
       { type: 'section', text: { type: 'mrkdwn', text: `*🧩 The Daily Socrattio*\n\n>${riddle.text}` } },
-      { type: 'context', elements: [{ type: 'mrkdwn', text: `💬 Debate it in the thread — but submit your answer *privately* 👇  Results at *${revealTime} UTC* 🏆` }] },
+      { type: 'context', elements: [{ type: 'mrkdwn', text: `💬 Debate it in the thread - but submit your answer *privately* 👇  Results at *${revealTime} UTC* 🏆` }] },
       { type: 'actions', elements: [{
         type: 'button',
         style: 'primary',

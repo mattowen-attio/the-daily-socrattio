@@ -1,5 +1,5 @@
 /**
- * /api/cron-post — posts the daily riddle (Vercel Cron fires this at 15:00 UTC;
+ * /api/cron-post - posts the daily riddle (Vercel Cron fires this at 15:00 UTC;
  * an external scheduler can also hit it with the CRON_SECRET bearer token).
  * Picks an unused riddle, posts it with the Submit button + live counter, and
  * records it as the open riddle.

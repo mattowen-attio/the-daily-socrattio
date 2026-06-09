@@ -1,5 +1,5 @@
 /**
- * quarter.js — quarter boundaries + rollover helpers for the leaderboard reset.
+ * quarter.js - quarter boundaries + rollover helpers for the leaderboard reset.
  */
 export const ymd = (d = new Date()) => d.toISOString().slice(0, 10);
 

@@ -1,5 +1,5 @@
 /**
- * /api/cron-reveal — runs at reveal time (20:00 UTC). Judges every answer in one
+ * /api/cron-reveal - runs at reveal time (20:00 UTC). Judges every answer in one
  * batch, awards points, DMs each participant privately, posts a count-only public
  * announcement, updates the leaderboard, and rolls the quarter over when due.
  */
@@ -72,7 +72,7 @@ export default async function handler(req, res) {
     await slack('chat.postMessage', {
       channel: dm,
       text: won
-        ? `✅ *Correct!* The answer was *${riddle.answer}*. +1 point — see the board 🏆`
+        ? `✅ *Correct!* The answer was *${riddle.answer}*. +1 point - see the board 🏆`
         : `❌ *Not quite.* The answer was *${riddle.answer}*.${verdicts[s.id]?.reason ? ` (${verdicts[s.id].reason})` : ''} Back tomorrow! 🧩`,
     });
   }

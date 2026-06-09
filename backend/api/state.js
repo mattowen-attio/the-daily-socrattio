@@ -1,5 +1,5 @@
 /**
- * /api/state — the only PUBLIC, read-only endpoint. The static GitHub Pages site
+ * /api/state - the only PUBLIC, read-only endpoint. The static GitHub Pages site
  * fetches this to render live data. It deliberately never exposes the current
  * answer until the riddle is revealed, and never exposes anyone's submission.
  */
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   const [board, fame, schedule, current] = await Promise.all([getBoard(), getFame(), getSchedule(), getCurrent()]);
   const b = board || freshBoard();
 
-  // today's riddle — text is public; the answer is withheld until revealed
+  // today's riddle - text is public; the answer is withheld until revealed
   let today = null;
   if (current) {
     const riddle = await riddleById(current.riddleId);

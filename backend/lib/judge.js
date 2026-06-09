@@ -1,5 +1,5 @@
 /**
- * judge.js — decides if an answer is correct. Two layers:
+ * judge.js - decides if an answer is correct. Two layers:
  *   1. deterministic normaliser settles exact / known-variant matches for free;
  *   2. Claude judges the rest against a FIXED rubric, in ONE batched call at
  *      temperature 0, so everyone is graded by the same yardstick.
@@ -68,7 +68,7 @@ export async function judgeBatch(riddle, submissions) {
         content:
           `Riddle: ${riddle.text}\n` +
           `Intended answer: ${riddle.answer}\n` +
-          `Also acceptable: ${(riddle.accept || []).join(', ') || '—'}\n\n` +
+          `Also acceptable: ${(riddle.accept || []).join(', ') || '-'}\n\n` +
           `Grade each submission below. Reply with ONLY JSON:\n` +
           `{"results":[{"id":"<id>","verdict":"correct|incorrect|borderline","reason":"<short>"}]}\n\n` +
           needsLLM.map(s => `id ${s.id}: ${JSON.stringify(s.answer)}`).join('\n'),

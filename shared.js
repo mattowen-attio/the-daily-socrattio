@@ -27,7 +27,7 @@ function avatar(person, big) {
 
 const fmtDate = (iso) => new Date(iso + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 
-// Attio logomark — official PNG at assets/attio-logo.png when present, else a
+// Attio logomark - official PNG at assets/attio-logo.png when present, else a
 // faithful Attio-style mark that adapts to light/dark.
 const ATTIO_SVG = `<svg class="attio-mark" viewBox="0 0 100 100" role="img" aria-label="Attio">
   <g transform="rotate(-40 50 50)">
@@ -49,7 +49,7 @@ mountLogo();
 /* ---- custom Attio-style symbol set (geometric, 24px grid, 2px rounded strokes) ----
  * Replaces generic emoji on the champions page. Inherit `currentColor`, so they
  * take the gold accent. The champion emblem is a geometric crown. */
-// champion emblem — a clean geometric crown (gold). Bold, simple, unmistakable.
+// champion emblem - a clean geometric crown (gold). Bold, simple, unmistakable.
 const ICONS = {
   emblem: `<svg class="sym sym-emblem" viewBox="0 0 64 64" role="img" aria-label="champion crown"><g fill="currentColor"><path d="M11 47 L11 26 L21.5 35.5 L32 16 L42.5 35.5 L53 26 L53 47 Z"/><rect x="9.5" y="45.5" width="45" height="8.5" rx="2.6"/><circle cx="11" cy="23" r="2.5"/><circle cx="32" cy="13" r="2.7"/><circle cx="53" cy="23" r="2.5"/></g></svg>`,
   check: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.4l2.6 2.6L16 9"/></svg>`,
@@ -74,7 +74,7 @@ async function loadData() {
         players: s.players || [], champions: s.hallOfFame || [],
         today: s.today, recent: s.recent || [],
       };
-    } catch (e) { console.warn('Live API unavailable — using demo data.', e); }
+    } catch (e) { console.warn('Live API unavailable - using demo data.', e); }
   }
 
   // Demo mode: local JSON files.

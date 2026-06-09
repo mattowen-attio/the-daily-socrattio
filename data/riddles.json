@@ -1,5 +1,5 @@
 {
-  "_note": "Hand-vetted, work-safe riddle bank. Each riddle has an answer plus accepted variants. Claude judges thread replies against these, so close/synonymous answers still count. Add freely — set 'used' via the automation so nothing repeats within a quarter.",
+  "_note": "Hand-vetted, work-safe riddle bank. Each riddle has an answer plus accepted variants. Claude judges thread replies against these, so close/synonymous answers still count. Add freely - set 'used' via the automation so nothing repeats within a quarter.",
   "riddles": [
     { "id": "r001", "text": "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?", "answer": "An echo", "accept": ["echo"], "difficulty": "medium", "category": "classic" },
     { "id": "r002", "text": "The more of me you take, the more you leave behind. What am I?", "answer": "Footsteps", "accept": ["footsteps", "steps", "footprints"], "difficulty": "medium", "category": "classic" },

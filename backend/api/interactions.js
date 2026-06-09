@@ -1,5 +1,5 @@
 /**
- * /api/interactions — the single Request URL for Slack interactivity.
+ * /api/interactions - the single Request URL for Slack interactivity.
  * Handles:
  *   • block_actions  → "Submit your answer" button → opens the private modal (views.open)
  *   • view_submission → stores the answer (latest wins) + bumps the live count (chat.update)
@@ -34,11 +34,11 @@ export default async function handler(req, res) {
     if (payload.type === 'block_actions' && payload.actions?.[0]?.action_id === 'open_answer') {
       const current = await getCurrent();
       if (!current) {
-        // riddle already closed — open a tiny "closed" modal instead
+        // riddle already closed - open a tiny "closed" modal instead
         await slack('views.open', {
           trigger_id: payload.trigger_id,
           view: { type: 'modal', title: { type: 'plain_text', text: 'Answers closed' },
-            blocks: [{ type: 'section', text: { type: 'mrkdwn', text: "Today's riddle is closed — check the leaderboard! 🏆" } }] },
+            blocks: [{ type: 'section', text: { type: 'mrkdwn', text: "Today's riddle is closed - check the leaderboard! 🏆" } }] },
         });
         return res.status(200).end();
       }

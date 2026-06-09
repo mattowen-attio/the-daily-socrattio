@@ -32,7 +32,7 @@ async function init() {
     $('#statusTag').innerHTML = '🏆 Revealed';
     $('#revealBlock').style.display = 'none';
     $('#answerReveal').hidden = false;
-    $('#answerValue').textContent = t.answer || '—';
+    $('#answerValue').textContent = t.answer || '-';
   }
   $('#answerBtn').href = cfg.channelUrl || 'https://app.slack.com/client';
 

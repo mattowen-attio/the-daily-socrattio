@@ -1,5 +1,5 @@
 /**
- * slack.js — thin Slack Web API client + request-signature verification.
+ * slack.js - thin Slack Web API client + request-signature verification.
  * Signing follows https://docs.slack.dev/authentication/verifying-requests-from-slack
  */
 import crypto from 'node:crypto';

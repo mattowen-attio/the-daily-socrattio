@@ -1,9 +1,9 @@
 /**
- * store.js — all game state lives in Upstash Redis (private). Raw answers NEVER
+ * store.js - all game state lives in Upstash Redis (private). Raw answers NEVER
  * touch the public GitHub Pages repo; only aggregate state is exposed via /api/state.
  *
  * Keys:
- *   riddles                  → full riddle bank (array, incl. answers) — seeded once
+ *   riddles                  → full riddle bank (array, incl. answers) - seeded once
  *   used                     → Set of riddle ids already played this quarter
  *   riddle:current           → { riddleId, channel, ts, date } for the open riddle
  *   answers:<riddleId>       → Hash userId → answer text (latest wins = editable)
