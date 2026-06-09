@@ -19,6 +19,7 @@ async function initIllustres() {
 
   $('#champCount').textContent = `${champs.length} champion${champs.length === 1 ? '' : 's'}`;
   const bc = $('#brandChannel'); if (bc && m.cfg.channelUrl) bc.href = m.cfg.channelUrl;
+  const heroCrown = $('.ih-crown'); if (heroCrown) heroCrown.innerHTML = ICONS.emblem;
 
   const list = $('#champList');
   if (!champs.length) {
@@ -40,7 +41,7 @@ async function initIllustres() {
 
     // left - crowned avatar
     const left = el('div', 'champ-face');
-    left.appendChild(el('div', 'champ-crown', '👑'));
+    left.appendChild(el('div', 'champ-crown', ICONS.emblem));
     left.appendChild(avatar(c, true));
     card.appendChild(left);
 

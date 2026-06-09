@@ -244,7 +244,7 @@ section { margin-bottom: clamp(44px, 7vw, 76px); }
 .pod.second { order: 1; margin-top: 18px; }
 .pod.third { order: 3; margin-top: 18px; }
 @media (max-width: 640px) { .pod, .pod.first, .pod.second, .pod.third { order: 0; margin-top: 0; } }
-.pod .crown { position: absolute; top: -14px; font-size: 26px; filter: drop-shadow(0 3px 6px rgba(245,196,81,.5)); }
+.pod .crown { position: absolute; top: -16px; color: var(--gold); line-height: 0; filter: drop-shadow(0 3px 6px rgba(245,196,81,.5)); }
 .pod .crown .sym-emblem { width: 30px; height: 30px; }
 .pod .rank-num { font-size: 12px; font-weight: 700; color: var(--text-faint); letter-spacing: .04em; }
 .pod .pod-name { font-weight: 700; font-size: 15px; letter-spacing: -.01em; }
@@ -299,7 +299,7 @@ section { margin-bottom: clamp(44px, 7vw, 76px); }
   background: linear-gradient(180deg, var(--gold-soft), var(--surface));
   display: flex; flex-direction: column; align-items: center; gap: 10px;
 }
-.fame-card .fc-crown { font-size: 24px; }
+.fame-card .fc-crown { color: var(--gold); line-height: 0; }
 .fame-card .fc-crown .sym-emblem { width: 40px; height: 40px; }
 .fame-card .fc-q { font-size: 12px; font-weight: 700; letter-spacing: .05em; color: var(--gold); text-transform: uppercase; }
 .fame-card .fc-name { font-weight: 700; font-size: 17px; letter-spacing: -.01em; }
@@ -326,11 +326,20 @@ section { margin-bottom: clamp(44px, 7vw, 76px); }
 
 /* ---- Attiani Illustres (champions page) ---- */
 .illustres-hero { text-align: center; padding: clamp(16px, 4vw, 36px) 0 36px; display: flex; flex-direction: column; align-items: center; gap: 5px; }
-.ih-crown { font-size: 42px; filter: drop-shadow(0 5px 12px rgba(245,196,81,.45)); }
+.ih-crown { color: var(--gold); line-height: 0; filter: drop-shadow(0 6px 16px rgba(245,196,81,.5)); }
 .ih-crown .sym-emblem { width: 70px; height: 70px; }
 .illustres-hero h1 { font-family: 'Manrope', var(--font); font-weight: 800; font-size: clamp(30px, 5vw, 46px); letter-spacing: -.03em; }
 .ih-gloss { font-family: 'Newsreader', serif; font-style: italic; color: var(--gold); font-size: 15px; margin-top: -2px; }
 .ih-sub { color: var(--text-dim); font-size: 15px; max-width: 520px; text-wrap: balance; }
+.ih-quote { margin: 18px auto 0; max-width: 600px; }
+.ih-quote blockquote {
+  font-family: 'Playfair Display', 'Newsreader', Georgia, serif; font-style: italic;
+  font-size: clamp(19px, 2.7vw, 26px); line-height: 1.4; color: var(--text); text-wrap: balance;
+}
+.ih-cite {
+  margin-top: 10px; font-size: 12px; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--gold);
+}
 
 .champ-list { display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin: 0 auto; }
 .champ-card {
@@ -339,7 +348,9 @@ section { margin-bottom: clamp(44px, 7vw, 76px); }
   border-radius: var(--radius); background: linear-gradient(180deg, var(--gold-soft), var(--surface)); box-shadow: var(--shadow);
 }
 .champ-face { position: relative; }
-.champ-crown { position: absolute; top: -17px; left: 50%; transform: translateX(-50%); font-size: 22px; filter: drop-shadow(0 3px 6px rgba(245,196,81,.5)); z-index: 2; }
+.champ-crown { position: absolute; top: -24px; left: 50%; transform: translateX(-50%); width: 46px; height: 46px; color: var(--gold); filter: drop-shadow(0 3px 7px rgba(245,196,81,.5)); z-index: 2; }
+.h2-crown { color: var(--gold); display: inline-flex; vertical-align: -0.16em; }
+.h2-crown .sym-emblem { width: 1.15em; height: 1.15em; }
 .champ-crown .sym-emblem { width: 46px; height: 46px; }
 .champ-main { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
 .champ-name { font-weight: 700; font-size: 19px; letter-spacing: -.01em; }

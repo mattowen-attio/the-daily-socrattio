@@ -16,6 +16,7 @@ async function init() {
   $('#updatedLabel').textContent = 'updated ' + fmtDate(m.lastUpdated);
   $('#footNote').textContent = `${cfg.timezoneNote} · resets every quarter`;
   const bc = $('#brandChannel'); if (bc && cfg.channelUrl) bc.href = cfg.channelUrl;
+  const tc = $('#teaserCrown'); if (tc) tc.innerHTML = ICONS.emblem;
 
   // ---- today's riddle ----
   const t = m.today;
@@ -47,7 +48,7 @@ async function init() {
     const realRank = ranked.indexOf(p) + 1;
     const card = el('div', `pod ${podClass[i]} fade-up`);
     card.style.animationDelay = (i * 70) + 'ms';
-    if (realRank === 1) card.appendChild(el('div', 'crown', '👑'));
+    if (realRank === 1) card.appendChild(el('div', 'crown', ICONS.emblem));
     card.appendChild(avatar(p, true));
     card.appendChild(el('div', 'rank-num', `#${realRank}`));
     card.appendChild(el('div', 'pod-name', p.name));
@@ -96,7 +97,7 @@ async function init() {
   m.champions.slice(0, 3).forEach(c => {
     const card = el('a', 'fame-card');
     card.href = 'illustres.html';
-    card.appendChild(el('div', 'fc-crown', '👑'));
+    card.appendChild(el('div', 'fc-crown', ICONS.emblem));
     card.appendChild(avatar(c, true));
     card.appendChild(el('div', 'fc-q', c.quarter));
     card.appendChild(el('div', 'fc-name', c.name));
