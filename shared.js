@@ -46,6 +46,50 @@ function mountLogo() {
 }
 mountLogo();
 
+/* ---- "Particle" background: tiny dots drifting upward (a nod to Attio's Particle) ----
+ * Theme-aware via the --particle-rgb CSS var. Respects reduced-motion. */
+function initParticles() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c = document.createElement('canvas');
+  Object.assign(c.style, { position: 'fixed', inset: '0', zIndex: '-1', pointerEvents: 'none' });
+  document.body.appendChild(c);
+  const ctx = c.getContext('2d');
+  let w, h, dpr, parts;
+  const colour = () => (getComputedStyle(document.documentElement).getPropertyValue('--particle-rgb').trim() || '150,170,230');
+  const spawn = (seed) => ({
+    x: Math.random() * w,
+    y: seed ? Math.random() * h : h + 8 * dpr,
+    r: (Math.random() * 1.5 + 0.5) * dpr,
+    sp: (Math.random() * 0.35 + 0.12) * dpr,
+    sway: Math.random() * Math.PI * 2,
+    swaySp: Math.random() * 0.015 + 0.004,
+    a: Math.random() * 0.45 + 0.15,
+  });
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = c.width = innerWidth * dpr; h = c.height = innerHeight * dpr;
+    c.style.width = innerWidth + 'px'; c.style.height = innerHeight + 'px';
+    parts = Array.from({ length: Math.round(Math.min(80, innerWidth / 20)) }, () => spawn(true));
+  }
+  function frame() {
+    ctx.clearRect(0, 0, w, h);
+    const col = colour();
+    for (const p of parts) {
+      p.y -= p.sp; p.sway += p.swaySp;
+      if (p.y < -8 * dpr) Object.assign(p, spawn(false));
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(${col},${p.a})`;
+      ctx.arc(p.x + Math.sin(p.sway) * 0.4 * dpr, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    requestAnimationFrame(frame);
+  }
+  resize();
+  addEventListener('resize', resize);
+  frame();
+}
+initParticles();
+
 /* ---- custom Attio-style symbol set (geometric, 24px grid, 2px rounded strokes) ----
  * Replaces generic emoji on the champions page. Inherit `currentColor`, so they
  * take the gold accent. The champion emblem is a geometric crown. */
