@@ -189,7 +189,6 @@ section { margin-bottom: clamp(44px, 7vw, 76px); }
 }
 .sp-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
 .sp-app { font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; }
-.sp-avatar { width: 20px; height: 20px; border-radius: 5px; object-fit: cover; display: block; }
 .sp-badge { font-size: 9px; font-weight: 700; letter-spacing: .06em; background: var(--surface-2); border: 1px solid var(--border); color: var(--text-faint); padding: 2px 5px; border-radius: 4px; }
 .sp-time { font-size: 11.5px; color: var(--text-faint); }
 .sp-body { border-left: 3px solid var(--accent); padding-left: 14px; display: flex; flex-direction: column; gap: 9px; }
@@ -201,7 +200,6 @@ section { margin-bottom: clamp(44px, 7vw, 76px); }
   margin-top: 13px; width: 100%; cursor: default;
   background: #007a5a; color: #fff; font-family: var(--font); font-weight: 700; font-size: 13.5px;
   border: none; border-radius: 7px; padding: 10px 14px; letter-spacing: -.01em;
-  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
 }
 .sp-foot { display: flex; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-faint); }
 .sp-foot b { color: var(--text); }
@@ -350,16 +348,8 @@ section { margin-bottom: clamp(44px, 7vw, 76px); }
 .champ-stats { display: flex; gap: 22px; }
 .stat { display: flex; flex-direction: column; align-items: center; gap: 1px; min-width: 50px; }
 .stat-icon { color: var(--gold); height: 22px; display: flex; align-items: center; }
-.sym { width: 1em; height: 1em; display: inline-block; vertical-align: -0.14em; }
-.stat-icon .sym { width: 21px; height: 21px; vertical-align: 0; }
-[data-ic] { display: inline-flex; align-items: center; }
-/* medals (leaderboard ranks) */
-.sym-medal { width: 1.5em; height: 1.5em; vertical-align: -0.45em; }
-.medal-gold { color: var(--gold); }
-.medal-silver { color: #aab1bd; }
-.medal-bronze { color: #c8814a; }
-.h2-crown { color: var(--gold); display: inline-flex; vertical-align: -0.16em; }
-.h2-crown .sym-emblem { width: 1.15em; height: 1.15em; }
+.sym { display: block; }
+.stat-icon .sym { width: 21px; height: 21px; }
 .stat-val { font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
 .stat-label { font-size: 10.5px; color: var(--text-faint); text-transform: uppercase; letter-spacing: .05em; }
 .champ-empty { text-align: center; color: var(--text-dim); padding: 48px 20px; }
