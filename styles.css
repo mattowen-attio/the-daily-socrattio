@@ -42,7 +42,9 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+/* offset in-page anchor jumps so the sticky header doesn't cover the section */
+#today, #board, #fame, section[id] { scroll-margin-top: 96px; }
 body {
   font-family: var(--font);
   background: var(--bg);

@@ -141,6 +141,22 @@ async function loadData() {
   };
 }
 
+// ---- in-page anchor scrolling, offset for the sticky header ----
+// (robust regardless of which element is the scroll container)
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const id = a.getAttribute('href').slice(1);
+  const target = id && document.getElementById(id);
+  if (!target) return;
+  e.preventDefault();
+  const header = document.querySelector('.topbar');
+  const offset = (header ? header.offsetHeight : 64) + 16;
+  const y = target.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+  history.pushState(null, '', '#' + id);
+});
+
 // ---- theme toggle (shared across pages) ----
 (() => {
   const btn = $('#themeToggle');
