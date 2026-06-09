@@ -9,7 +9,7 @@
  *   answers:<riddleId>       → Hash userId → answer text (latest wins = editable)
  *   leaderboard              → { quarter, quarterStart, quarterEnd, lastUpdated, players[] }
  *   schedule                 → { days: [...] }   (aggregate log shown on the site)
- *   hallOfFame               → { champions: [...] }
+ *   hallOfFame               → { people: [...] }  (coin ledger: gold/silver/bronze per person)
  */
 import { Redis } from '@upstash/redis';
 
@@ -37,5 +37,5 @@ export const setBoard = (b) => redis.set('leaderboard', b);
 export const getSchedule = async () => (await redis.get('schedule')) || { days: [] };
 export const setSchedule = (s) => redis.set('schedule', s);
 
-export const getFame = async () => (await redis.get('hallOfFame')) || { champions: [] };
+export const getFame = async () => (await redis.get('hallOfFame')) || { people: [] };
 export const setFame = (f) => redis.set('hallOfFame', f);

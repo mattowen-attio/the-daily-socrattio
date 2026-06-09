@@ -1,39 +1,25 @@
-/* ============ Attiani Illustres · champions page ============
- * Lists everyone who has won a season, with their stats. Groups by person so a
- * multi-season champion shows one card with all their crowns. Uses shared.js.
+/* ============ Attiani Illustres · the coin ledger ============
+ * Everyone who has finished top-3 in a season, ranked by their Attios
+ * (gold = 1st, silver = 2nd, bronze = 3rd). Uses shared.js.
  */
 async function initIllustres() {
   let m;
   try { m = await loadData(); } catch (e) { console.error('Data load failed', e); return; }
 
-  // group championship entries by person → career view
-  const byId = {};
-  (m.champions || []).forEach(c => {
-    const g = byId[c.id] || (byId[c.id] = { id: c.id, name: c.name, imageUrl: c.imageUrl, seasons: [], correct: 0, bestStreak: 0, daysPlayed: 0 });
-    g.seasons.push(c.quarter);
-    g.correct += (c.correct ?? c.points ?? 0);
-    g.bestStreak = Math.max(g.bestStreak, c.bestStreak || 0);
-    g.daysPlayed += (c.daysPlayed || 0);
-  });
-  const champs = Object.values(byId).sort((a, b) => b.seasons.length - a.seasons.length || b.correct - a.correct);
+  const champs = [...(m.champions || [])].sort(rankByCoins);
+  const totalCoins = champs.reduce((n, c) => n + (c.gold || 0) + (c.silver || 0) + (c.bronze || 0), 0);
 
-  $('#champCount').textContent = `${champs.length} champion${champs.length === 1 ? '' : 's'}`;
+  $('#champCount').textContent = `${totalCoins} ${m.currency || 'Attios'} minted`;
   const bc = $('#brandChannel'); if (bc && m.cfg.channelUrl) bc.href = m.cfg.channelUrl;
   const heroCrown = $('.ih-crown'); if (heroCrown) heroCrown.innerHTML = ICONS.emblem;
 
   const list = $('#champList');
   if (!champs.length) {
-    list.appendChild(el('p', 'champ-empty', 'No champions crowned yet - the first quarter is still being written.'));
+    list.appendChild(el('p', 'champ-empty', 'No champions crowned yet - the first season is still being written.'));
     return;
   }
 
-  const stat = (icon, value, label) => {
-    const s = el('div', 'stat');
-    s.appendChild(el('span', 'stat-icon', icon));
-    s.appendChild(el('span', 'stat-val', String(value)));
-    s.appendChild(el('span', 'stat-label', label));
-    return s;
-  };
+  const place = (p) => (p === 1 ? '1st' : p === 2 ? '2nd' : '3rd');
 
   champs.forEach((c, i) => {
     const card = el('div', 'champ-card fade-up');
@@ -45,22 +31,19 @@ async function initIllustres() {
     left.appendChild(avatar(c, true));
     card.appendChild(left);
 
-    // middle - name + season badges
+    // middle - name, title tag, season badges, stat line
     const mid = el('div', 'champ-main');
     mid.appendChild(el('div', 'champ-name', c.name));
     const seasonsWrap = el('div', 'champ-seasons');
-    seasonsWrap.appendChild(el('span', 'champ-title-tag', c.seasons.length > 1 ? `${c.seasons.length}× champion` : 'champion'));
-    c.seasons.forEach(q => seasonsWrap.appendChild(el('span', 'season-badge', q)));
+    const tag = c.gold > 0 ? (c.gold > 1 ? `${c.gold}× champion` : 'champion') : 'podium finisher';
+    seasonsWrap.appendChild(el('span', 'champ-title-tag', tag));
+    (c.seasons || []).forEach(s => seasonsWrap.appendChild(el('span', `season-badge place-${s.place}`, `${s.quarter} · ${place(s.place)}`)));
     mid.appendChild(seasonsWrap);
+    mid.appendChild(el('div', 'champ-stat-line', `${c.correct} correct · ${c.bestStreak} best streak · ${c.daysPlayed} days played`));
     card.appendChild(mid);
 
-    // right - stats
-    const stats = el('div', 'champ-stats');
-    stats.appendChild(stat('✅', c.correct, 'correct'));
-    stats.appendChild(stat('🔥', c.bestStreak, 'best streak'));
-    stats.appendChild(stat('📅', c.daysPlayed, 'days played'));
-    stats.appendChild(stat('🏆', c.seasons.length, c.seasons.length === 1 ? 'season' : 'seasons'));
-    card.appendChild(stats);
+    // right - the coin cabinet (click a coin to enlarge)
+    card.appendChild(coinHaul(c, { interactive: true }));
 
     list.appendChild(card);
   });

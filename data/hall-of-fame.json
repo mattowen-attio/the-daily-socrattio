@@ -1,8 +1,13 @@
 {
-  "_note": "Quarterly champions ('Attiani Illustres'). cron-reveal appends an entry when a quarter ends and the leaderboard resets. points = correct answers that season.",
-  "champions": [
-    { "quarter": "Q1 2026", "name": "Maya Patel",    "id": "U003", "points": 47, "correct": 47, "bestStreak": 12, "daysPlayed": 58, "imageUrl": null },
-    { "quarter": "Q4 2025", "name": "Lukas Bauer",   "id": "U002", "points": 52, "correct": 52, "bestStreak": 15, "daysPlayed": 61, "imageUrl": null },
-    { "quarter": "Q3 2025", "name": "Sofia Almeida", "id": "U001", "points": 44, "correct": 44, "bestStreak": 9,  "daysPlayed": 55, "imageUrl": null }
+  "_note": "Attiani Illustres - the coin ledger. Each person earns Attios by finishing top-3 in a season: gold = 1st, silver = 2nd, bronze = 3rd. cron-reveal appends podium finishes at each quarter rollover. Ranked by gold, then silver, then bronze.",
+  "people": [
+    { "id": "U003", "name": "Maya Patel",    "imageUrl": null, "gold": 1, "silver": 1, "bronze": 1, "correct": 47, "bestStreak": 12, "daysPlayed": 58,
+      "seasons": [ { "quarter": "Q1 2026", "place": 1 }, { "quarter": "Q4 2025", "place": 2 }, { "quarter": "Q3 2025", "place": 3 } ] },
+    { "id": "U002", "name": "Lukas Bauer",   "imageUrl": null, "gold": 1, "silver": 1, "bronze": 1, "correct": 52, "bestStreak": 15, "daysPlayed": 61,
+      "seasons": [ { "quarter": "Q4 2025", "place": 1 }, { "quarter": "Q3 2025", "place": 2 }, { "quarter": "Q1 2026", "place": 3 } ] },
+    { "id": "U001", "name": "Sofia Almeida", "imageUrl": null, "gold": 1, "silver": 1, "bronze": 0, "correct": 44, "bestStreak": 9, "daysPlayed": 55,
+      "seasons": [ { "quarter": "Q3 2025", "place": 1 }, { "quarter": "Q1 2026", "place": 2 } ] },
+    { "id": "U007", "name": "Aisha Okafor",  "imageUrl": null, "gold": 0, "silver": 0, "bronze": 1, "correct": 18, "bestStreak": 3, "daysPlayed": 25,
+      "seasons": [ { "quarter": "Q4 2025", "place": 3 } ] }
   ]
 }

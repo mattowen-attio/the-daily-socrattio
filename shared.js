@@ -104,6 +104,96 @@ const ICONS = {
   trophy: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.5h9V8a4.5 4.5 0 0 1-9 0V4.5Z"/><path d="M7.5 5.6H5.3a2 2 0 0 0 2.4 3.1M16.5 5.6h2.2a2 2 0 0 1-2.4 3.1"/><path d="M12 12.5v3M9 19.5l.7-4h4.6l.7 4M8.3 19.5h7.4"/></svg>`,
 };
 
+/* ---- Attios: gold / silver / bronze coins, earned by finishing top-3 in a season ---- */
+const COIN = {
+  gold:   { name: 'Gold',   sm: 'assets/coin-gold-sm.png',   lg: 'assets/coin-gold-lg.png',
+            blurb: 'Struck for the season champion - first place. The rarest and most coveted Attio of all.' },
+  silver: { name: 'Silver', sm: 'assets/coin-silver-sm.png', lg: 'assets/coin-silver-lg.png',
+            blurb: 'Struck for the season runner-up - second place, a hair from glory.' },
+  bronze: { name: 'Bronze', sm: 'assets/coin-bronze-sm.png', lg: 'assets/coin-bronze-lg.png',
+            blurb: 'Struck for a third-place finish on the season board.' },
+};
+const COIN_ORDER = ['gold', 'silver', 'bronze'];
+
+// a small, clickable coin image
+function coinEl(tier, cls) {
+  const img = new Image();
+  img.src = COIN[tier].sm;
+  img.alt = `${COIN[tier].name} Attio`;
+  img.className = 'coin' + (cls ? ' ' + cls : '');
+  img.dataset.coin = tier;
+  img.loading = 'lazy';
+  return img;
+}
+
+// a person's coin cabinet: gold / silver / bronze with counts
+function coinHaul(person, opts = {}) {
+  const wrap = el('div', 'coin-haul');
+  COIN_ORDER.forEach(t => {
+    const n = person[t] || 0;
+    if (opts.hideZero && !n) return;
+    const item = el('div', 'coin-item' + (n ? '' : ' empty'));
+    const c = coinEl(t, 'coin-sm');
+    if (opts.interactive === false) delete c.dataset.coin;
+    item.appendChild(c);
+    item.appendChild(el('span', 'coin-count', '×' + n));
+    wrap.appendChild(item);
+  });
+  return wrap;
+}
+
+// rank people for the hall of fame: most gold, then silver, then bronze, then correct
+function rankByCoins(a, b) {
+  return (b.gold || 0) - (a.gold || 0) || (b.silver || 0) - (a.silver || 0) ||
+         (b.bronze || 0) - (a.bronze || 0) || (b.correct || 0) - (a.correct || 0);
+}
+
+// ---- coin lightbox (click any coin to enlarge; cycle gold/silver/bronze) ----
+let _coinModal;
+function renderCoinModal(tier) {
+  const c = COIN[tier];
+  _coinModal.dataset.tier = tier;
+  const img = _coinModal.querySelector('.coin-modal-img');
+  img.src = c.lg;
+  img.classList.remove('coin-spin'); void img.offsetWidth; img.classList.add('coin-spin');
+  _coinModal.querySelector('.coin-modal-tier').textContent = `${c.name} Attio`;
+  _coinModal.querySelector('.coin-modal-place').textContent = c.blurb;
+  _coinModal.querySelectorAll('.coin-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tier));
+}
+function openCoinModal(tier) {
+  if (!_coinModal) {
+    _coinModal = el('div', 'coin-modal-overlay');
+    _coinModal.innerHTML = `
+      <div class="coin-modal" role="dialog" aria-modal="true">
+        <button class="coin-modal-x" aria-label="Close">&times;</button>
+        <img class="coin-modal-img" alt="Attio coin" />
+        <div class="coin-modal-tier"></div>
+        <p class="coin-modal-quote">"A coin gifted to a true Attian for conquering the seasonal riddle campaign."</p>
+        <p class="coin-modal-place"></p>
+        <div class="coin-modal-tabs"></div>
+        <span class="coin-modal-hint">click the coin to flip through the tiers</span>
+      </div>`;
+    document.body.appendChild(_coinModal);
+    const tabs = _coinModal.querySelector('.coin-modal-tabs');
+    COIN_ORDER.forEach(t => { const c = coinEl(t, 'coin-tab'); c.dataset.tab = t; tabs.appendChild(c); });
+    const close = () => _coinModal.classList.remove('open');
+    _coinModal.addEventListener('click', (e) => {
+      if (e.target === _coinModal || e.target.closest('.coin-modal-x')) return close();
+      const tab = e.target.closest('[data-tab]');
+      if (tab) return renderCoinModal(tab.dataset.tab);
+      if (e.target.closest('.coin-modal-img')) renderCoinModal(COIN_ORDER[(COIN_ORDER.indexOf(_coinModal.dataset.tier) + 1) % 3]);
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  }
+  renderCoinModal(tier);
+  _coinModal.classList.add('open');
+}
+// open the lightbox when any coin (outside the modal's own tabs) is clicked
+document.addEventListener('click', (e) => {
+  const c = e.target.closest('[data-coin]');
+  if (c && !c.closest('.coin-modal-tabs')) openCoinModal(c.dataset.coin);
+});
+
 async function loadJSON(p) { const r = await fetch(p, { cache: 'no-store' }); if (!r.ok) throw new Error(p); return r.json(); }
 
 // Normalize either the live API or the local demo files into one model shape.
@@ -118,6 +208,7 @@ async function loadData() {
         cfg, live: true,
         quarter: s.quarter, quarterStart: s.quarterStart, quarterEnd: s.quarterEnd, lastUpdated: s.lastUpdated,
         players: s.players || [], champions: s.hallOfFame || [],
+        currency: cfg.currency || 'Attios',
         today: s.today, recent: s.recent || [],
       };
     } catch (e) { console.warn('Live API unavailable - using demo data.', e); }
@@ -134,7 +225,8 @@ async function loadData() {
   return {
     cfg, live: false,
     quarter: board.quarter, quarterStart: board.quarterStart, quarterEnd: board.quarterEnd, lastUpdated: board.lastUpdated,
-    players: board.players, champions: fame.champions,
+    players: board.players, champions: fame.people || fame.champions || [],
+    currency: cfg.currency || 'Attios',
     today: { date: td.date, text: tr.text, difficulty: tr.difficulty, status: td.status, answer: tr.answer },
     recent: schedule.days.filter(d => d.status === 'revealed').slice(0, 4).map(d => {
       const rr = riddles[d.riddleId];

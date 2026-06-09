@@ -19,6 +19,6 @@ console.log(`✓ Seeded ${riddles.length} riddles into Redis.`);
 
 if (!(await redis.get('leaderboard'))) { await redis.set('leaderboard', freshBoard()); console.log('✓ Initialised an empty leaderboard for this quarter.'); }
 if (!(await redis.get('schedule')))    { await redis.set('schedule', { days: [] }); console.log('✓ Initialised the schedule log.'); }
-if (!(await redis.get('hallOfFame')))  { await redis.set('hallOfFame', { champions: [] }); console.log('✓ Initialised the hall of fame.'); }
+if (!(await redis.get('hallOfFame')))  { await redis.set('hallOfFame', { people: [] }); console.log('✓ Initialised the hall of fame.'); }
 
 console.log('Done. The backend is ready - add the Slack bot token last.');

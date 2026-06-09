@@ -27,19 +27,23 @@ export default async function handler(req, res) {
   const verdicts = submissions.length ? await judgeBatch(riddle, submissions) : {};
   const correct = new Set(submissions.filter(s => isCorrect(verdicts[s.id])).map(s => s.id));
 
-  // 2. quarterly rollover (archive champion + reset) if we've crossed into a new quarter
+  // 2. quarterly rollover: mint Attios for the top 3 (gold/silver/bronze) + reset
   let board = (await getBoard()) || freshBoard();
   const nowQ = quarterOf();
   if (board.quarter !== nowQ.label) {
-    const champ = [...board.players].sort((a, b) => b.points - a.points)[0];
-    if (champ) {
+    const podium = [...board.players].sort((a, b) => b.points - a.points).slice(0, 3);
+    if (podium.length) {
       const fame = await getFame();
-      fame.champions.unshift({
-        quarter: board.quarter, id: champ.id, name: champ.name,
-        points: champ.points, correct: champ.points, bestStreak: champ.bestStreak || 0, daysPlayed: champ.daysPlayed || 0,
-        imageUrl: champ.imageUrl,
+      const people = fame.people || [];
+      const tiers = ['gold', 'silver', 'bronze'];
+      podium.forEach((p, idx) => {
+        let person = people.find(x => x.id === p.id);
+        if (!person) { person = { id: p.id, name: p.name, imageUrl: p.imageUrl, gold: 0, silver: 0, bronze: 0, correct: 0, bestStreak: 0, daysPlayed: 0, seasons: [] }; people.push(person); }
+        person[tiers[idx]] += 1;
+        person.correct = p.points; person.bestStreak = Math.max(person.bestStreak, p.bestStreak || 0); person.daysPlayed = p.daysPlayed || person.daysPlayed;
+        person.seasons.unshift({ quarter: board.quarter, place: idx + 1 });
       });
-      await setFame(fame);
+      await setFame({ people });
     }
     board = freshBoard();
   }

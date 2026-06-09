@@ -62,8 +62,10 @@ async function init() {
     const rank = i + 1;
     const row = el('div', `row${rank <= 3 ? ' top' + rank : ''} fade-up`);
     row.style.animationDelay = Math.min(i * 35, 400) + 'ms';
-    const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
-    row.appendChild(el('div', 'rank', String(medal)));
+    const rankCell = el('div', 'rank');
+    if (rank <= 3) rankCell.appendChild(coinEl(['gold', 'silver', 'bronze'][rank - 1], 'rank-coin'));
+    else rankCell.textContent = String(rank);
+    row.appendChild(rankCell);
     row.appendChild(avatar(p));
     const who = el('div', 'who');
     who.appendChild(el('div', 'nm', p.name));
@@ -94,14 +96,13 @@ async function init() {
 
   // ---- Illustres teaser (links to the full champions page) ----
   const fameList = $('#fameList');
-  m.champions.slice(0, 3).forEach(c => {
+  [...m.champions].sort(rankByCoins).slice(0, 3).forEach(c => {
     const card = el('a', 'fame-card');
     card.href = 'illustres.html';
     card.appendChild(el('div', 'fc-crown', ICONS.emblem));
     card.appendChild(avatar(c, true));
-    card.appendChild(el('div', 'fc-q', c.quarter));
     card.appendChild(el('div', 'fc-name', c.name));
-    card.appendChild(el('div', 'fc-pts', `${c.points} points · champion`));
+    card.appendChild(coinHaul(c, { hideZero: true, interactive: false }));
     fameList.appendChild(card);
   });
 }
@@ -123,3 +124,4 @@ function startCountdown(revealUTC) {
 }
 
 init();
+

@@ -10,5 +10,6 @@
   "postTimeUTC": "15:00",
   "revealTimeUTC": "20:00",
   "pointsPerCorrect": 1,
+  "currency": "Attios",
   "timezoneNote": "Posted 15:00 UTC (10am ET · 7am PT · 4pm CET) · Answer revealed 20:00 UTC"
 }

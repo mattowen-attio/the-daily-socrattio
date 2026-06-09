@@ -42,7 +42,7 @@ export default async function handler(req, res) {
   return res.status(200).json({
     quarter: b.quarter, quarterStart: b.quarterStart, quarterEnd: b.quarterEnd, lastUpdated: b.lastUpdated,
     players: b.players || [],
-    hallOfFame: fame?.champions || [],
+    hallOfFame: fame?.people || [],
     today,
     recent,
   });

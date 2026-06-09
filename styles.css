@@ -367,8 +367,45 @@ section { margin-bottom: clamp(44px, 7vw, 76px); }
 .champ-empty { text-align: center; color: var(--text-dim); padding: 48px 20px; }
 @media (max-width: 640px) {
   .champ-card { grid-template-columns: auto 1fr; gap: 16px; }
-  .champ-stats { grid-column: 1 / -1; justify-content: space-between; gap: 10px; }
+  .champ-stats, .coin-haul { grid-column: 1 / -1; justify-content: flex-start; gap: 18px; }
 }
+
+/* ---- Attio coins ---- */
+.coin { width: 1.5em; height: 1.5em; object-fit: contain; cursor: pointer; vertical-align: middle; transition: transform .15s, filter .15s; -webkit-tap-highlight-color: transparent; }
+.coin:hover { transform: scale(1.14); filter: drop-shadow(0 2px 7px rgba(0,0,0,.4)); }
+.rank-coin { width: 27px; height: 27px; }
+.coin-sm { width: 32px; height: 32px; }
+.coin-haul { display: flex; gap: 16px; align-items: center; }
+.coin-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.coin-item.empty { opacity: .3; }
+.coin-count { font-size: 12px; font-weight: 700; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.champ-stat-line { font-size: 12px; color: var(--text-faint); margin-top: 2px; }
+.season-badge.place-1 { border-color: color-mix(in srgb, var(--gold) 42%, transparent); color: var(--gold); }
+
+/* coin lightbox */
+.coin-modal-overlay {
+  position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center;
+  padding: 24px; background: rgba(8,8,12,.72); backdrop-filter: blur(6px);
+}
+.coin-modal-overlay.open { display: flex; animation: fadeIn .2s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.coin-modal {
+  position: relative; width: 100%; max-width: 420px; text-align: center;
+  background: var(--bg-2); border: 1px solid var(--border-bright); border-radius: var(--radius);
+  padding: 32px 28px 24px; box-shadow: 0 24px 70px rgba(0,0,0,.55); animation: revealIn .3s cubic-bezier(.2,.7,.3,1);
+}
+.coin-modal-x { position: absolute; top: 10px; right: 14px; background: none; border: none; color: var(--text-faint); font-size: 26px; line-height: 1; cursor: pointer; }
+.coin-modal-x:hover { color: var(--text); }
+.coin-modal-img { width: 210px; height: 210px; object-fit: contain; cursor: pointer; filter: drop-shadow(0 10px 26px rgba(0,0,0,.45)); }
+.coin-spin { animation: coinFlip .5s cubic-bezier(.2,.7,.3,1); }
+@keyframes coinFlip { from { transform: rotateY(85deg) scale(.9); opacity: .25; } to { transform: none; opacity: 1; } }
+.coin-modal-tier { font-family: 'Manrope', var(--font); font-weight: 800; font-size: 22px; letter-spacing: -.02em; margin-top: 6px; }
+.coin-modal-quote { font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 15.5px; color: var(--text-dim); margin-top: 8px; text-wrap: balance; }
+.coin-modal-place { font-size: 13px; color: var(--text-faint); margin-top: 10px; text-wrap: balance; }
+.coin-modal-tabs { display: flex; justify-content: center; gap: 16px; margin-top: 20px; }
+.coin-modal-tabs .coin { width: 36px; height: 36px; opacity: .45; }
+.coin-modal-tabs .coin.active { opacity: 1; transform: scale(1.06); filter: drop-shadow(0 2px 7px rgba(0,0,0,.45)); }
+.coin-modal-hint { display: block; font-size: 11px; color: var(--text-faint); margin-top: 12px; letter-spacing: .02em; }
 
 /* ---- entrance ---- */
 .fade-up { opacity: 0; transform: translateY(12px); animation: fadeUp .55s cubic-bezier(.2,.7,.3,1) forwards; }
