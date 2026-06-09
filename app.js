@@ -29,7 +29,7 @@ async function init() {
     startCountdown(cfg.revealTimeUTC);
   } else {
     $('#statusTag').classList.add('revealed');
-    $('#statusTag').innerHTML = '🏆 Revealed';
+    $('#statusTag').innerHTML = `${ICONS.trophy} Revealed`;
     $('#revealBlock').style.display = 'none';
     $('#answerReveal').hidden = false;
     $('#answerValue').textContent = t.answer || '-';
@@ -60,15 +60,15 @@ async function init() {
     const rank = i + 1;
     const row = el('div', `row${rank <= 3 ? ' top' + rank : ''} fade-up`);
     row.style.animationDelay = Math.min(i * 35, 400) + 'ms';
-    const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
-    row.appendChild(el('div', 'rank', String(medal)));
+    const medalClass = rank === 1 ? 'medal-gold' : rank === 2 ? 'medal-silver' : 'medal-bronze';
+    row.appendChild(el('div', 'rank' + (rank <= 3 ? ' ' + medalClass : ''), rank <= 3 ? ICONS.medal : String(rank)));
     row.appendChild(avatar(p));
     const who = el('div', 'who');
     who.appendChild(el('div', 'nm', p.name));
     who.appendChild(el('div', 'meta', `${p.daysPlayed} days played`));
     row.appendChild(who);
     const hot = p.streak >= 3;
-    row.appendChild(el('div', 'streak' + (hot ? ' hot' : ''), p.streak > 0 ? `${hot ? '🔥' : '·'} ${p.streak} day streak` : ''));
+    row.appendChild(el('div', 'streak' + (hot ? ' hot' : ''), p.streak > 0 ? `${ICONS.flame} ${p.streak} day streak` : ''));
     row.appendChild(el('div', 'pts', `${p.points}<span>pts</span>`));
     list.appendChild(row);
   });
@@ -79,7 +79,7 @@ async function init() {
     const card = el('div', 'rec-card');
     card.appendChild(el('div', 'rc-date', fmtDate(d.date)));
     card.appendChild(el('div', 'rc-q', '"' + d.text + '"'));
-    card.appendChild(el('div', 'rc-a', '✓ ' + d.answer));
+    card.appendChild(el('div', 'rc-a', `${ICONS.checkMini} ${d.answer}`));
     const win = el('div', 'rc-win');
     const avs = el('div', 'mini-avs');
     (d.winners || []).slice(0, 5).forEach(id => players[id] && avs.appendChild(avatar(players[id])));

@@ -102,7 +102,21 @@ const ICONS = {
   flame: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7c2.7 3.2 4.8 5.7 4.8 9.1a4.8 4.8 0 0 1-9.6 0c0-1.9.9-3.5 2.1-4.8C10.7 7.8 11.6 6 12 2.7Z"/><path d="M12 13.4c1 1 1.6 1.8 1.6 2.8a1.6 1.6 0 0 1-3.2 0c0-1 .6-1.8 1.6-2.8Z"/></svg>`,
   calendar: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17M8 3.2v3.4M16 3.2v3.4"/></svg>`,
   trophy: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.5h9V8a4.5 4.5 0 0 1-9 0V4.5Z"/><path d="M7.5 5.6H5.3a2 2 0 0 0 2.4 3.1M16.5 5.6h2.2a2 2 0 0 1-2.4 3.1"/><path d="M12 12.5v3M9 19.5l.7-4h4.6l.7 4M8.3 19.5h7.4"/></svg>`,
+  sun: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8l1.8-1.8M18 6l1.8-1.8"/></svg>`,
+  chat: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13.5a2.5 2.5 0 0 1-2.5 2.5H9l-4 3.2V6.5A2.5 2.5 0 0 1 7.5 4h10A2.5 2.5 0 0 1 20 6.5z"/></svg>`,
+  arrowDown: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v13M6.5 12.5 12 18l5.5-5.5"/></svg>`,
+  lock: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9.5" rx="2.2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/><path d="M12 14.6v2.2"/></svg>`,
+  lightbulb: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17a6 6 0 1 1 6 0c-.7.5-1 1.2-1 2h-4c0-.8-.3-1.5-1-2Z"/><path d="M9.5 20.5h5"/></svg>`,
+  medal: `<svg class="sym sym-medal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 3 11 10.3M15.4 3 13 10.3"/><circle cx="12" cy="16" r="5"/><circle cx="12" cy="16" r="1.4" fill="currentColor" stroke="none"/></svg>`,
+  checkMini: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 9.2 16.7 19 7"/></svg>`,
+  close: `<svg class="sym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6 18 18M18 6 6 18"/></svg>`,
 };
+
+// Replace <span data-ic="name"></span> placeholders in static HTML with custom icons.
+function mountIcons() {
+  document.querySelectorAll('[data-ic]').forEach((e) => { const k = e.dataset.ic; if (ICONS[k]) e.innerHTML = ICONS[k]; });
+}
+mountIcons();
 
 async function loadJSON(p) { const r = await fetch(p, { cache: 'no-store' }); if (!r.ok) throw new Error(p); return r.json(); }
 
