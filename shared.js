@@ -111,7 +111,7 @@ const COIN = {
   silver: { name: 'Silver', sm: 'assets/coin-silver-sm.png', lg: 'assets/coin-silver-lg.png',
             blurb: 'Struck for the season runner-up - second place, a hair from glory.' },
   bronze: { name: 'Bronze', sm: 'assets/coin-bronze-sm.png', lg: 'assets/coin-bronze-lg.png',
-            blurb: 'Struck for a third-place finish on the season board.' },
+            blurb: 'Struck for third place - honoured to stand in glory\'s shadow.' },
 };
 const COIN_ORDER = ['gold', 'silver', 'bronze'];
 
