@@ -4,6 +4,8 @@
   "title": "The Daily Socrattio",
   "subtitle": "Learn by asking. Answer to climb. - a daily riddle for the wise.",
   "channel": "#the-daily-socrattio",
+  "_channelUrl": "In Slack, right-click the channel -> Copy link, and paste the URL here.",
+  "channelUrl": "https://attio.slack.com",
   "workspace": "Attio",
   "postTimeUTC": "15:00",
   "revealTimeUTC": "20:00",

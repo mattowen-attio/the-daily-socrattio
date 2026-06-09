@@ -18,6 +18,7 @@ async function initIllustres() {
   const champs = Object.values(byId).sort((a, b) => b.seasons.length - a.seasons.length || b.correct - a.correct);
 
   $('#champCount').textContent = `${champs.length} champion${champs.length === 1 ? '' : 's'}`;
+  const bc = $('#brandChannel'); if (bc && m.cfg.channelUrl) bc.href = m.cfg.channelUrl;
 
   const list = $('#champList');
   if (!champs.length) {

@@ -15,6 +15,7 @@ async function init() {
   $('#daysLeft').textContent = `${daysLeft} days left`;
   $('#updatedLabel').textContent = 'updated ' + fmtDate(m.lastUpdated);
   $('#footNote').textContent = `${cfg.timezoneNote} · resets every quarter`;
+  const bc = $('#brandChannel'); if (bc && cfg.channelUrl) bc.href = cfg.channelUrl;
 
   // ---- today's riddle ----
   const t = m.today;

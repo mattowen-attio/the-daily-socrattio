@@ -27,8 +27,8 @@ function avatar(person, big) {
 
 const fmtDate = (iso) => new Date(iso + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 
-// Attio logomark - official PNG at assets/attio-logo.png when present, else a
-// faithful Attio-style mark that adapts to light/dark.
+// Header logo - the coin (assets/coin-logo.png); falls back to the Attio-style
+// mark if the image is missing.
 const ATTIO_SVG = `<svg class="attio-mark" viewBox="0 0 100 100" role="img" aria-label="Attio">
   <g transform="rotate(-40 50 50)">
     <rect x="31" y="9" width="28" height="68" rx="13" fill="currentColor"/>
@@ -42,7 +42,7 @@ function mountLogo() {
   const img = new Image();
   img.onload = () => { img.className = 'attio-mark'; img.alt = 'Attio'; slot.replaceChildren(img); };
   img.onerror = () => { slot.innerHTML = ATTIO_SVG; };
-  img.src = 'assets/attio-logo.png';
+  img.src = 'assets/coin-logo.png';
 }
 mountLogo();
 

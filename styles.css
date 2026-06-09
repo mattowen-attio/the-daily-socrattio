@@ -87,13 +87,14 @@ body {
 .brand-logo { display: inline-flex; width: 34px; height: 34px; flex-shrink: 0; }
 .attio-mark { width: 34px; height: 34px; object-fit: contain; color: var(--text); display: block; }
 .attio-mark .amk-cut { fill: var(--bg); }
-.brand-text { display: flex; flex-direction: column; line-height: 1.12; }
+.brand-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.12; }
 .brand-title {
-  font-family: 'Manrope', var(--font);
+  font-family: 'Manrope', var(--font); text-decoration: none;
   font-weight: 800; font-size: 16.5px; letter-spacing: -.035em; color: var(--text);
 }
 .brand-title .bt-light { font-weight: 600; color: var(--text-dim); letter-spacing: -.02em; }
-.brand-sub { font-size: 11.5px; color: var(--text-faint); font-weight: 500; }
+.brand-sub { font-size: 11.5px; color: var(--text-faint); font-weight: 500; text-decoration: none; transition: color .15s; }
+.brand-sub:hover { color: var(--accent); text-decoration: underline; }
 .brand-sub .dotsep { opacity: .5; margin: 0 1px; }
 .nav { display: flex; gap: 4px; margin-left: auto; }
 .nav a {
