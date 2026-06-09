@@ -18,7 +18,6 @@ async function initIllustres() {
   const champs = Object.values(byId).sort((a, b) => b.seasons.length - a.seasons.length || b.correct - a.correct);
 
   $('#champCount').textContent = `${champs.length} champion${champs.length === 1 ? '' : 's'}`;
-  const heroCrown = $('.ih-crown'); if (heroCrown) heroCrown.innerHTML = ICONS.emblem;
 
   const list = $('#champList');
   if (!champs.length) {
@@ -40,7 +39,7 @@ async function initIllustres() {
 
     // left - crowned avatar
     const left = el('div', 'champ-face');
-    left.appendChild(el('div', 'champ-crown', ICONS.emblem));
+    left.appendChild(el('div', 'champ-crown', '👑'));
     left.appendChild(avatar(c, true));
     card.appendChild(left);
 
@@ -55,10 +54,10 @@ async function initIllustres() {
 
     // right - stats
     const stats = el('div', 'champ-stats');
-    stats.appendChild(stat(ICONS.check, c.correct, 'correct'));
-    stats.appendChild(stat(ICONS.flame, c.bestStreak, 'best streak'));
-    stats.appendChild(stat(ICONS.calendar, c.daysPlayed, 'days played'));
-    stats.appendChild(stat(ICONS.trophy, c.seasons.length, c.seasons.length === 1 ? 'season' : 'seasons'));
+    stats.appendChild(stat('✅', c.correct, 'correct'));
+    stats.appendChild(stat('🔥', c.bestStreak, 'best streak'));
+    stats.appendChild(stat('📅', c.daysPlayed, 'days played'));
+    stats.appendChild(stat('🏆', c.seasons.length, c.seasons.length === 1 ? 'season' : 'seasons'));
     card.appendChild(stats);
 
     list.appendChild(card);

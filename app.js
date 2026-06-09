@@ -46,7 +46,7 @@ async function init() {
     const realRank = ranked.indexOf(p) + 1;
     const card = el('div', `pod ${podClass[i]} fade-up`);
     card.style.animationDelay = (i * 70) + 'ms';
-    if (realRank === 1) card.appendChild(el('div', 'crown', ICONS.emblem));
+    if (realRank === 1) card.appendChild(el('div', 'crown', '👑'));
     card.appendChild(avatar(p, true));
     card.appendChild(el('div', 'rank-num', `#${realRank}`));
     card.appendChild(el('div', 'pod-name', p.name));
@@ -95,7 +95,7 @@ async function init() {
   m.champions.slice(0, 3).forEach(c => {
     const card = el('a', 'fame-card');
     card.href = 'illustres.html';
-    card.appendChild(el('div', 'fc-crown', ICONS.emblem));
+    card.appendChild(el('div', 'fc-crown', '👑'));
     card.appendChild(avatar(c, true));
     card.appendChild(el('div', 'fc-q', c.quarter));
     card.appendChild(el('div', 'fc-name', c.name));
