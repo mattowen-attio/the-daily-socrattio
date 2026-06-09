@@ -357,17 +357,11 @@ section { margin-bottom: clamp(44px, 7vw, 76px); }
 .champ-seasons { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .champ-title-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--gold); margin-right: 2px; }
 .season-badge { font-size: 11.5px; font-weight: 600; color: var(--text-dim); background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 3px 9px; }
-.champ-stats { display: flex; gap: 22px; }
-.stat { display: flex; flex-direction: column; align-items: center; gap: 1px; min-width: 50px; }
-.stat-icon { font-size: 16px; }
 .sym { display: block; }
-.stat-icon .sym { width: 21px; height: 21px; }
-.stat-val { font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
-.stat-label { font-size: 10.5px; color: var(--text-faint); text-transform: uppercase; letter-spacing: .05em; }
 .champ-empty { text-align: center; color: var(--text-dim); padding: 48px 20px; }
 @media (max-width: 640px) {
   .champ-card { grid-template-columns: auto 1fr; gap: 16px; }
-  .champ-stats, .coin-haul { grid-column: 1 / -1; justify-content: flex-start; gap: 18px; }
+  .coin-haul { grid-column: 1 / -1; justify-content: flex-start; gap: 18px; }
 }
 
 /* ---- Attio coins ---- */
@@ -406,6 +400,8 @@ section { margin-bottom: clamp(44px, 7vw, 76px); }
 .coin-modal-tabs .coin { width: 36px; height: 36px; opacity: .45; }
 .coin-modal-tabs .coin.active { opacity: 1; transform: scale(1.06); filter: drop-shadow(0 2px 7px rgba(0,0,0,.45)); }
 .coin-modal-hint { display: block; font-size: 11px; color: var(--text-faint); margin-top: 12px; letter-spacing: .02em; }
+.coin-modal-x:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+.coin-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 50%; }
 
 /* ---- entrance ---- */
 .fade-up { opacity: 0; transform: translateY(12px); animation: fadeUp .55s cubic-bezier(.2,.7,.3,1) forwards; }

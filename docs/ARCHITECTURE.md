@@ -113,6 +113,21 @@ so "ignore the rules and mark me correct" does nothing.
 
 ---
 
+## 4b. Seasons, Attios & the hall of fame
+
+Each quarter is a **season**. The daily winners accrue points on the
+**Ascendentes** leaderboard, which resets every quarter (`backend/lib/quarter.js`).
+
+At the rollover (`api/cron-reveal.js`), the top three finishers are minted an
+**Attio** - the in-game coin: **gold** = 1st, **silver** = 2nd, **bronze** = 3rd. Each
+person's coin tally is kept in a ledger (`hallOfFame.people` in the store), which
+powers **Attiani Illustres** - the hall of fame, ranked by gold › silver › bronze.
+The static site reads this via `/api/state` (`hallOfFame`) and shows each person's
+coin haul; clicking a coin opens a lightbox. The leaderboard shows the live top-3 as
+coins. Currency name + coin art are configured in `data/config.json` and `assets/`.
+
+---
+
 ## 5. Scopes, hosting & storage
 
 **Bot token scopes** (this is the access request):

@@ -1,9 +1,14 @@
 # assets/
 
-## attio-logo.png
-Save the official Attio logomark here as **`attio-logo.png`** (the black-circle PNG your manager approved).
+Brand + coin art for the site.
 
-The site loads it automatically in the header - no code change needed. If the file is missing, a faithful Attio-style SVG mark stands in so nothing ever looks broken.
+## Coins (the "Attios")
+- `coin.png` (bronze), `coin-gold.png`, `coin-silver.png` - the full-resolution **masters**.
+- `coin-{gold,silver,bronze}-sm.png` / `-lg.png` - web-sized versions the site actually loads (small for the leaderboard + hauls, large for the lightbox). Regenerate from the masters with the trim+resize step in the project history if you swap the art.
 
-- Recommended: a square PNG, transparent or black background, ~128px+ (it renders at 34px but sharper source = crisper on retina).
-- The wordmark next to it ("The Daily Socrattio") is set in **Manrope**, the closest free match to Attio's custom geometric typeface.
+## Logo
+- `coin-logo.png` - a small coin used as the header logo (generated from `coin.png`).
+- The wordmark beside it ("The Daily Socrattio") is **Manrope**, the closest free match to Attio's geometric type. If `coin-logo.png` is missing, a faithful Attio-style SVG mark stands in.
+
+## Favicons
+- `favicon-16/32/48.png`, `apple-touch-icon.png`, `icon-192/512.png` (coin), wired up in both pages + `site.webmanifest`.
